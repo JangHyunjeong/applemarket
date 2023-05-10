@@ -1,21 +1,6 @@
 <template>
-  <div>
-    <!-- 헤더 -->
-    <header class="">
-      <h1 class="visually-hidden">검색</h1>
-      <button arial-lable="내 동네">중화동</button>
-
-      <button aria-label="검색">
-        <i class="xi-search" aria-hidden="true"></i>
-      </button>
-      <button aria-label="메뉴">
-        <i class="xi-bars" aria-hidden="true"></i>
-      </button>
-      <button aria-label="알람">
-        <i class="xi-bell-o" aria-hidden="true"></i>
-      </button>
-    </header>
-    <!-- //헤더 -->
+  <div class="layouts">
+    <GlobalHeader></GlobalHeader>
 
     <!-- 하단 탭바 -->
     <nav class="tab-bar">
@@ -48,7 +33,7 @@
     </button>
 
     <!--상품리스트-->
-    <div class="product-list-wrap">
+    <!-- <div class="product-list-wrap">
       <h1 class="visually-hidden">상품리스트</h1>
       <ul class="product-list">
         <li class="product-item">
@@ -82,15 +67,19 @@
           </a>
         </li>
       </ul>
-    </div>
+    </div> -->
     <!--//상품리스트-->
   </div>
 </template>
 
 <script>
+import GlobalHeader from "./components/GlobalHeader.vue";
+
 export default {
   name: "App",
-  components: {},
+  components: {
+    GlobalHeader,
+  },
 };
 </script>
 
