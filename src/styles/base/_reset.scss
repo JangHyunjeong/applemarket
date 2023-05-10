@@ -147,11 +147,16 @@ input[type="text"],
 button,
 select {
   outline: none;
+  font: inherit;
 }
 button {
   cursor: pointer;
   background-color: transparent;
   border: 0;
+  padding: 0;
+}
+a {
+  font: inherit;
 }
 /* ios대응 */
 /* text크기를 자동으로 조절하지 말아라 */
@@ -160,6 +165,10 @@ html {
   -moz-text-size-adjust: none;
   -ms-text-size-adjust: none;
   -o-text-size-adjust: none;
+}
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
 }
 /* select 화살표 */
 /* 화살표없애기 for ie10, 11 */
