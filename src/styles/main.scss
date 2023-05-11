@@ -1,7 +1,9 @@
 @import "./constants/colors";
+@import "./constants/demensions";
 
 @import "./base/fonts";
 @import "./base/reset";
 
+@import "./layouts/layouts";
 @import "./layouts/global-header";
 @import "./layouts/global-tab-bar";
