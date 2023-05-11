@@ -49,7 +49,7 @@
         </button>
       </li>
       <li>
-        <h1 class="title">중고거래 글쓰기</h1>
+        <h2 class="title">중고거래 글쓰기</h2>
       </li>
     </ul>
 

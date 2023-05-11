@@ -16,6 +16,7 @@
 
   .left-menu {
     display: flex;
+    align-items: center;
     margin-left: -$side-white-space;
 
     li {
@@ -51,6 +52,12 @@
         }
       }
     }
+
+    .title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
   }
 
   .right-menu {
@@ -64,11 +71,19 @@
         margin-right: 0;
       }
 
-      button {
+      button:not(.button-submit) {
         width: 30px;
         height: 30px;
         font-size: 24px;
         color: $primary;
+      }
+
+      .button-submit {
+        height: 30px;
+        font-size: 16px;
+        color: $red;
+        font-weight: 500;
+        padding: 0 $side-white-space;
       }
     }
   }
