@@ -1,15 +1,6 @@
 <template>
   <form action="">
-    <div class="attach-picture">
-      <ul>
-        <li>
-          <button aria-label="사진 첨부하기" type="button">
-            <i class="xi-camera"></i>
-          </button>
-        </li>
-        <li></li>
-      </ul>
-    </div>
+    <AttachPhoto />
 
     <div class="input-group">
       <input class="" type="text" placeholder="제목" />
@@ -26,7 +17,12 @@
 </template>
 
 <script>
+import AttachPhoto from "../components/AttachPhoto.vue";
+
 export default {
   name: "ProductWrite",
+  components: {
+    AttachPhoto,
+  },
 };
 </script>
