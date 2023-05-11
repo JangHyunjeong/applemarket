@@ -2,7 +2,7 @@
   <div class="layouts">
     <GlobalHeader />
 
-    <GlobalTabBar />
+    <GlobalTabBar v-if="$route.path == '/'" />
 
     <FloatButton v-if="$route.path == '/'" />
 
