@@ -36,6 +36,30 @@
     </ul>
   </header>
 
+  <header class="global-header" v-else-if="$route.path == '/write'">
+    <h1 class="visually-hidden">애플마켓</h1>
+    <ul class="left-menu">
+      <li>
+        <button
+          @click="$router.go(-1)"
+          arial-lable="뒤로가기"
+          class="button-back"
+        >
+          <i class="xi-angle-left"></i>
+        </button>
+      </li>
+      <li>
+        <h1 class="title">중고거래 글쓰기</h1>
+      </li>
+    </ul>
+
+    <ul class="right-menu">
+      <li>
+        <button class="button-submit" aria-label="글쓰기 작성완료">완료</button>
+      </li>
+    </ul>
+  </header>
+
   <header class="global-header" v-else>
     <h1 class="visually-hidden">애플마켓</h1>
     <ul class="left-menu">
