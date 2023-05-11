@@ -4,9 +4,7 @@
 
     <GlobalTabBar />
 
-    <button aria-label="글쓰기">
-      <i class="xi-plus" aria-hidden="true"></i>
-    </button>
+    <FloatButton />
 
     <!--상품리스트-->
     <!-- <div class="product-list-wrap">
@@ -51,14 +49,18 @@
 <script>
 import GlobalHeader from "./components/GlobalHeader.vue";
 import GlobalTabBar from "./components/GlobalTabBar.vue";
+import FloatButton from "./components/FloatButton.vue";
 
 export default {
   name: "App",
   components: {
     GlobalHeader,
     GlobalTabBar,
+    FloatButton,
   },
 };
 </script>
+
+<style></style>
 
 <style></style>
