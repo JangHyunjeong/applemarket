@@ -4,7 +4,7 @@
 
     <GlobalTabBar />
 
-    <FloatButton />
+    <FloatButton v-if="$route.path == '/'" />
 
     <RouterView />
   </div>
