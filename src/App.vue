@@ -1,32 +1,8 @@
 <template>
   <div class="layouts">
-    <GlobalHeader></GlobalHeader>
+    <GlobalHeader />
 
-    <!-- 하단 탭바 -->
-    <nav class="tab-bar">
-      <h1 class="visually-hidden">탭바</h1>
-      <ul class="tab-bar-list">
-        <li class="tab-bar-item">
-          <button aria-label="홈" class="tab-bar-button">
-            <i class="xi-home-o"></i>
-            <span class="txt">홈</span>
-          </button>
-        </li>
-        <li class="tab-bar-item">
-          <button aria-label="채팅" class="tab-bar-button">
-            <i class="xi-forum-o"></i>
-            <span class="txt">채팅</span>
-          </button>
-        </li>
-        <li class="tab-bar-item">
-          <button aria-label="나의사과" class="tab-bar-button">
-            <i class="xi-user-oㄴ"></i>
-            <span class="txt">나의사과</span>
-          </button>
-        </li>
-      </ul>
-    </nav>
-    <!-- // 하단 탭바 -->
+    <GlobalTabBar />
 
     <button aria-label="글쓰기">
       <i class="xi-plus" aria-hidden="true"></i>
@@ -74,11 +50,13 @@
 
 <script>
 import GlobalHeader from "./components/GlobalHeader.vue";
+import GlobalTabBar from "./components/GlobalTabBar.vue";
 
 export default {
   name: "App",
   components: {
     GlobalHeader,
+    GlobalTabBar,
   },
 };
 </script>
