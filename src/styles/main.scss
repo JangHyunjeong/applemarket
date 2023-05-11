@@ -4,10 +4,13 @@
 @import "./base/fonts";
 @import "./base/reset";
 
+@import "./modules/buttons";
+
 @import "./components/float-button";
 @import "./components/product-list";
 @import "./components/user-info";
 @import "./components/product-info";
+@import "./components/product-cta";
 
 @import "./layouts/layouts";
 @import "./layouts/global-header";
