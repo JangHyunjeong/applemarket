@@ -1,8 +1,10 @@
-@import "./constants/colors";
 @import "./constants/demensions";
+@import "./constants/colors";
 
 @import "./base/fonts";
 @import "./base/reset";
+
+@import "./components/float-button";
 
 @import "./layouts/layouts";
 @import "./layouts/global-header";
