@@ -143,9 +143,10 @@ img {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
 }
-input[type="text"],
+input,
 button,
-select {
+select,
+textarea {
   outline: none;
   font: inherit;
 }
@@ -154,9 +155,6 @@ button {
   background-color: transparent;
   border: 0;
   padding: 0;
-}
-a {
-  font: inherit;
 }
 /* ios대응 */
 /* text크기를 자동으로 조절하지 말아라 */
