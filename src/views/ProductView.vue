@@ -1,23 +1,20 @@
 <template>
-  <div class="product-view">
-    <h1 class="visually-hidden">상품상세 페이지</h1>
+  <h1 class="visually-hidden">상품상세 페이지</h1>
 
-    <div class="product-carousel">
-      <img src="../assets/product-img1.jpg" alt="" />
-    </div>
+  <ProductCarousel />
 
-    <UserInfoVue />
+  <UserInfoVue />
 
-    <ProductInfo />
+  <ProductInfo />
 
-    <ProductCta />
-  </div>
+  <ProductCta />
 </template>
 
 <script>
 import UserInfoVue from "@/components/UserInfo.vue";
 import ProductInfo from "@/components/ProductInfo.vue";
 import ProductCta from "@/components/ProductCta.vue";
+import ProductCarousel from "@/components/ProductCarousel.vue";
 
 export default {
   name: "ProductView",
@@ -25,6 +22,7 @@ export default {
     UserInfoVue,
     ProductInfo,
     ProductCta,
+    ProductCarousel,
   },
 };
 </script>
