@@ -150,6 +150,9 @@ textarea {
   outline: none;
   font: inherit;
 }
+textarea {
+  resize: none;
+}
 button {
   cursor: pointer;
   background-color: transparent;
