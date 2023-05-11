@@ -1,30 +1,5 @@
 <template>
   <div class="product-view">
-    <header class="global-header">
-      <h1 class="visually-hidden"></h1>
-      <div class="left-menu">
-        <button arial-lable="뒤로가기" class="button-back">
-          <i class="xi-angle-left"></i>
-        </button>
-        <button arial-lable="메인으로 가기" class="button-home">
-          <i class="xi-home-o"></i>
-        </button>
-      </div>
-
-      <ul class="right-menu">
-        <li>
-          <button aria-label="공유하기">
-            <i class="xi-share-alt-o" aria-hidden="true"></i>
-          </button>
-        </li>
-        <li>
-          <button aria-label="메뉴 더보기">
-            <i class="xi-ellipsis-v" aria-hidden="true"></i>
-          </button>
-        </li>
-      </ul>
-    </header>
-
     <h1 class="visually-hidden">상품상세 페이지</h1>
 
     <div class="product-carousel">

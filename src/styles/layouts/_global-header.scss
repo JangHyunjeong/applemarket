@@ -1,4 +1,6 @@
 .global-header {
+  $side-white-space: 6px;
+
   position: sticky;
   top: 0;
   left: 0;
@@ -12,28 +14,47 @@
   background-color: $white;
 
   .left-menu {
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 30px;
-      font-size: 18px;
-      line-height: 30px;
-      color: $primary;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+    display: flex;
+    margin-left: -$side-white-space;
 
-      i {
-        margin-left: 10px;
-        font-size: 15px;
-        padding-top: 3px;
+    li {
+      margin-right: 12px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      button:not(.button-local) {
+        width: 30px;
+        height: 30px;
+        font-size: 24px;
+        color: $primary;
+      }
+
+      button.button-local {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 30px;
+        padding: 0 $side-white-space;
+        font-size: 18px;
+        line-height: 30px;
+        color: $primary;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+
+        i {
+          margin-left: 10px;
+          font-size: 15px;
+          padding-top: 3px;
+        }
       }
     }
   }
 
   .right-menu {
     display: flex;
-    margin-right: -6px;
+    margin-right: -$side-white-space;
 
     li {
       margin-right: 12px;

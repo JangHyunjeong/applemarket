@@ -1,12 +1,51 @@
 <template>
-  <header class="global-header">
-    <h1 class="visually-hidden">검색</h1>
-    <div class="left-menu">
-      <button arial-lable="내 동네" class="button-local">
-        중화동
-        <i class="xi-angle-down"></i>
-      </button>
-    </div>
+  <header class="global-header" v-if="$route.path == '/view'">
+    <h1 class="visually-hidden">애플마켓</h1>
+    <ul class="left-menu">
+      <li>
+        <button
+          @click="$router.go(-1)"
+          arial-lable="뒤로가기"
+          class="button-back"
+        >
+          <i class="xi-angle-left"></i>
+        </button>
+      </li>
+      <li>
+        <button
+          @click="$router.push('/')"
+          arial-lable="메인으로 가기"
+          class="button-home"
+        >
+          <i class="xi-home-o"></i>
+        </button>
+      </li>
+    </ul>
+
+    <ul class="right-menu">
+      <li>
+        <button aria-label="공유하기">
+          <i class="xi-share-alt-o" aria-hidden="true"></i>
+        </button>
+      </li>
+      <li>
+        <button aria-label="메뉴 더보기">
+          <i class="xi-ellipsis-v" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+  </header>
+
+  <header class="global-header" v-else>
+    <h1 class="visually-hidden">애플마켓</h1>
+    <ul class="left-menu">
+      <li>
+        <button arial-lable="내 동네" class="button-local">
+          중화동
+          <i class="xi-angle-down"></i>
+        </button>
+      </li>
+    </ul>
 
     <ul class="right-menu">
       <li>
@@ -30,6 +69,6 @@
 
 <script>
 export default {
-  name: "Header",
+  name: "GlobalHeader",
 };
 </script>
