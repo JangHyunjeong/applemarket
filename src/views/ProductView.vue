@@ -6,15 +6,7 @@
       <img src="../assets/product-img1.jpg" alt="" />
     </div>
 
-    <div class="user-info">
-      <div class="user-avartar-group">
-        <div class="avartar">
-          <img src="../assets/user01.jpg" alt="유저명" />
-        </div>
-        <strong>토끼가 좋아</strong>
-        <div>중랑구 신내2동</div>
-      </div>
-    </div>
+    <UserInfoVue />
 
     <div class="product-info">
       <h3 class="product-info-title">
@@ -51,8 +43,12 @@
 </template>
 
 <script>
+import UserInfoVue from "@/components/UserInfo.vue";
+
 export default {
   name: "ProductView",
-  components: {},
+  components: {
+    UserInfoVue,
+  },
 };
 </script>
