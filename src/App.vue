@@ -6,7 +6,7 @@
 
     <FloatButton />
 
-    <ProductList />
+    <RouterView />
   </div>
 </template>
 
@@ -14,7 +14,6 @@
 import GlobalHeader from "./components/GlobalHeader.vue";
 import GlobalTabBar from "./components/GlobalTabBar.vue";
 import FloatButton from "./components/FloatButton.vue";
-import ProductList from "./components/ProductList";
 
 export default {
   name: "App",
@@ -22,7 +21,6 @@ export default {
     GlobalHeader,
     GlobalTabBar,
     FloatButton,
-    ProductList,
   },
 };
 </script>
