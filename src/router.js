@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "./views/Home.vue";
 import ProductView from "./views/ProductView.vue";
+import ProductWrite from "./views/ProductWrite.vue";
 
 const routes = [
   {
@@ -10,6 +11,10 @@ const routes = [
   {
     path: "/view",
     component: ProductView,
+  },
+  {
+    path: "/write",
+    component: ProductWrite,
   },
 ];
 

@@ -1,10 +1,10 @@
 <template>
   <div class="layouts">
     <GlobalHeader />
-    <!-- 
+
     <GlobalTabBar />
 
-    <FloatButton /> -->
+    <FloatButton />
 
     <RouterView />
   </div>
