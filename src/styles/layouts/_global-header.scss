@@ -4,6 +4,7 @@
   position: sticky;
   top: 0;
   left: 0;
+  z-index: $global-header-level;
   display: flex;
   justify-content: space-between;
   align-items: center;

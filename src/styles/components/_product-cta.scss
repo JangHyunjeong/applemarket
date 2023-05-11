@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 100;
+  z-index: $product-cta-level;
   display: flex;
   justify-content: space-between;
   align-items: center;
