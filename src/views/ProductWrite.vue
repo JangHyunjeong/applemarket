@@ -2,7 +2,7 @@
   <WriteHeader @saveData="saveData()" />
   <form action="">
     <AttachPhoto
-      :imgUrl="imgUrl"
+      :imgUrlArray="imgUrlArray"
       :isAttached="isAttached"
       @getImageUrl="getImageUrl($event)"
     />
@@ -29,7 +29,7 @@ export default {
       title: "",
       price: 0,
       content: "",
-      imgUrl: "",
+      imgUrlArray: [],
       isAttached: false,
     };
   },
@@ -51,17 +51,21 @@ export default {
       this.content = value;
     },
 
+    // 파일 첨부
     getImageUrl(e) {
       const files = e.files;
-      let url = URL.createObjectURL(files[0]);
-      console.log(url);
-      this.imgUrl = url;
 
-      if (url != null) {
+      for (const [key, value] of Object.entries(files)) {
+        let url = URL.createObjectURL(value);
+        this.imgUrlArray.push(url);
+      }
+
+      if (this.imgUrlArray != null) {
         this.isAttached = true;
       }
     },
 
+    // 작성된 데이터 저장
     saveData() {
       let dataArr = [];
       let oldArr = JSON.parse(window.localStorage.getItem("productListData"));
@@ -80,17 +84,11 @@ export default {
         title: this.title,
         price: this.price,
         content: this.content,
-        productMainImage: this.imgUrl,
-        // productImages: [
-        //   require("../assets/product-img1.jpg"),
-        //   require("../assets/product-img2.jpg"),
-        //   require("../assets/product-img1.jpg"),
-        //   require("../assets/product-img2.jpg"),
-        // ],
-        productImages: this.imgUrl,
+        productMainImage: this.imgUrlArray[0],
+        productImages: this.imgUrlArray,
         userId: "토끼가 좋아",
         userLocation: "노원구 공릉동",
-        userImage: require("../assets/product-img1.jpg"),
+        userImage: require("../assets/user01.jpg"),
         chat: 2,
         wish: 1,
         views: 100,

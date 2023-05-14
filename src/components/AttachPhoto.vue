@@ -19,11 +19,11 @@
           @change="$emit('getImageUrl', $event.target)"
         />
       </li>
-      <li v-if="isAttached">
+      <li v-if="isAttached" v-for="(item, idx) in imgUrlArray" :key="idx">
         <button type="button" class="button-delete">
           <i class="xi-close"></i>
         </button>
-        <img :src="`${imgUrl}`" alt="" />
+        <img :src="`${item}`" alt="" />
       </li>
     </ul>
   </div>
@@ -36,7 +36,7 @@ export default {
     return {};
   },
   props: {
-    imgUrl: String,
+    imgUrlArray: Array,
     isAttached: Boolean,
   },
 };
