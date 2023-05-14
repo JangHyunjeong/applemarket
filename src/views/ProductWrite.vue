@@ -1,7 +1,11 @@
 <template>
   <WriteHeader @saveData="saveData()" />
   <form action="">
-    <AttachPhoto />
+    <AttachPhoto
+      :imgUrl="imgUrl"
+      :isAttached="isAttached"
+      @getImageUrl="getImageUrl($event)"
+    />
     <InputGroup
       @getTitle="getTitle($event)"
       @getPrice="getPrice($event)"
@@ -25,6 +29,8 @@ export default {
       title: "",
       price: 0,
       content: "",
+      imgUrl: "",
+      isAttached: false,
     };
   },
   components: {
@@ -45,6 +51,17 @@ export default {
       this.content = value;
     },
 
+    getImageUrl(e) {
+      const files = e.files;
+      let url = URL.createObjectURL(files[0]);
+      console.log(url);
+      this.imgUrl = url;
+
+      if (url != null) {
+        this.isAttached = true;
+      }
+    },
+
     saveData() {
       let dataArr = [];
       let oldArr = JSON.parse(window.localStorage.getItem("productListData"));
@@ -63,17 +80,17 @@ export default {
         title: this.title,
         price: this.price,
         content: this.content,
-        productMainImage: require("../assets/product-img1.jpg"),
-
-        productImages: "",
+        productMainImage: this.imgUrl,
+        // productImages: [
+        //   require("../assets/product-img1.jpg"),
+        //   require("../assets/product-img2.jpg"),
+        //   require("../assets/product-img1.jpg"),
+        //   require("../assets/product-img2.jpg"),
+        // ],
+        productImages: this.imgUrl,
         userId: "토끼가 좋아",
         userLocation: "노원구 공릉동",
-        userImage: [
-          require("../assets/product-img1.jpg"),
-          require("../assets/product-img2.jpg"),
-          require("../assets/product-img1.jpg"),
-          require("../assets/product-img2.jpg"),
-        ],
+        userImage: require("../assets/product-img1.jpg"),
         chat: 2,
         wish: 1,
         views: 100,
