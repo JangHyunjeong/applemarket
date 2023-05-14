@@ -1,8 +1,18 @@
 <template>
   <div class="input-group">
-    <input class="" type="text" placeholder="제목" />
-    <input type="number" placeholder="가격" />
+    <input
+      @input="$emit('getTitle', $event.target.value)"
+      class=""
+      type="text"
+      placeholder="제목"
+    />
+    <input
+      @input="$emit('getPrice', $event.target.value)"
+      type="number"
+      placeholder="가격"
+    />
     <textarea
+      @input="$emit('getContent', $event.target.value)"
       name=""
       id=""
       cols="30"
@@ -14,5 +24,10 @@
 <script>
 export default {
   name: "InputGroup",
+  props: {
+    title: String,
+    price: Number,
+    content: String,
+  },
 };
 </script>
