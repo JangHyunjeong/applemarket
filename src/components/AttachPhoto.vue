@@ -2,14 +2,19 @@
   <div class="attach-photo">
     <ul class="attach-photo-list">
       <li>
-        <button class="button-attach" aria-label="사진 첨부하기" type="button">
+        <label
+          for="buttonAttach"
+          class="button-attach"
+          aria-label="사진 첨부하기"
+        >
           <i class="xi-camera"></i>
-          <!-- 첨부된 사진이 없을때 
-          <span>사진 첨부하기</span> -->
-          <span>2 / 10</span>
-        </button>
+          <span>사진 첨부하기</span>
+          <!-- 첨부된 사진이 있을때 
+          <span>2 / 10</span> -->
+        </label>
+        <input type="file" multiple id="buttonAttach" />
       </li>
-      <li>
+      <!-- <li>
         <button type="button" class="button-delete">
           <i class="xi-close"></i>
         </button>
@@ -26,7 +31,7 @@
           <i class="xi-close"></i>
         </button>
         <img src="../assets/product-img1.jpg" alt="" />
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>

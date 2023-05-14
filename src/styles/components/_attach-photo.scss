@@ -47,6 +47,10 @@
         flex-direction: column;
         color: $secondary;
 
+        & + input[type="file"] {
+          display: none;
+        }
+
         i {
           font-size: 26px;
         }
