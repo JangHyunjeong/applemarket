@@ -32,7 +32,6 @@ export default {
       window.localStorage.getItem("productListData")
     );
     this.productListData = productListData;
-    console.log(this.productListData);
   },
 };
 </script>

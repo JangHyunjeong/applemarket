@@ -19,7 +19,16 @@
       </RouterLink>
     </li> -->
 
-    <li class="product-item" v-for="(item, idx) in productListData" :key="idx">
+    <li class="product-empty" v-if="productListData === null">
+      등록된 상품이 없습니다.
+    </li>
+
+    <li
+      v-else
+      class="product-item"
+      v-for="(item, idx) in productListData"
+      :key="idx"
+    >
       <RouterLink to="/view" class="product-item-link">
         <div class="product-item-img">
           <img src="../assets/product-img1.jpg" alt="맥북" />
