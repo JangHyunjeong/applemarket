@@ -57,11 +57,26 @@ export default {
       }
 
       // 새로 생성된 데이터
+      // 하드코딩된 데이터 추후 수정 후 추가하기
       const datetime = new Date();
       const data = {
         title: this.title,
         price: this.price,
         content: this.content,
+        productMainImage: require("../assets/product-img1.jpg"),
+
+        productImages: "",
+        userId: "토끼가 좋아",
+        userLocation: "노원구 공릉동",
+        userImage: [
+          require("../assets/product-img1.jpg"),
+          require("../assets/product-img2.jpg"),
+          require("../assets/product-img1.jpg"),
+          require("../assets/product-img2.jpg"),
+        ],
+        chat: 2,
+        wish: 1,
+        views: 100,
         datetime: datetime.toLocaleTimeString(),
       };
 

@@ -24,21 +24,22 @@
     </li>
 
     <li
-      v-else
       class="product-item"
+      v-else
       v-for="(item, idx) in productListData"
       :key="idx"
     >
-      <RouterLink to="/view" class="product-item-link">
+      <RouterLink to="/view" class="product-item-links">
         <div class="product-item-img">
-          <img src="../assets/product-img1.jpg" alt="맥북" />
+          <!-- <img src="../assets/product-img1.jpg" alt="맥북" /> -->
+          <img :src="`${item.productMainImage}`" :alt="`${item.title}`" />
         </div>
         <div class="product-item-info">
           <p class="product-item-info-title">
             {{ item.title }}
           </p>
           <ul>
-            <li>중랑구 신내2동</li>
+            <li>{{ item.userLocation }}</li>
             <li>{{ item.datetime }}</li>
           </ul>
           <strong>{{ item.price }}</strong>
