@@ -1,35 +1,38 @@
 <template>
   <h1 class="visually-hidden">상품리스트</h1>
   <ul class="product-list">
-    <li class="product-item">
+    <!-- <li class="product-item">
       <RouterLink to="/view" class="product-item-link">
         <div class="product-item-img">
           <img src="../assets/product-img1.jpg" alt="맥북" />
         </div>
         <div class="product-item-info">
           <p class="product-item-info-title">
-            누구나 멋있게 사용할수 있는 아주 비싸고 멋진 맥북입니다. 이거 득템임
+            {{ productListData[0].title }}
           </p>
           <ul>
             <li>중랑구 신내2동</li>
-            <li>32분전</li>
+            <li>{{ productListData[0].datetime }}</li>
           </ul>
-          <strong>10,000원</strong>
+          <strong>{{ productListData[0].price }}</strong>
         </div>
       </RouterLink>
-    </li>
-    <li class="product-item">
+    </li> -->
+
+    <li class="product-item" v-for="(item, idx) in productListData" :key="idx">
       <RouterLink to="/view" class="product-item-link">
         <div class="product-item-img">
-          <img src="../assets/product-img2.jpg" alt="아이패드" />
+          <img src="../assets/product-img1.jpg" alt="맥북" />
         </div>
         <div class="product-item-info">
-          <p class="product-item-info-title">아이패드</p>
+          <p class="product-item-info-title">
+            {{ item.title }}
+          </p>
           <ul>
             <li>중랑구 신내2동</li>
-            <li>50분전</li>
+            <li>{{ item.datetime }}</li>
           </ul>
-          <strong>10,000원</strong>
+          <strong>{{ item.price }}</strong>
         </div>
       </RouterLink>
     </li>
@@ -39,5 +42,8 @@
 <script>
 export default {
   name: "ProductList",
+  props: {
+    productListData: Array,
+  },
 };
 </script>

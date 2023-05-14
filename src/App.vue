@@ -6,7 +6,7 @@
 
     <FloatButton v-if="$route.path == '/'" />
 
-    <RouterView />
+    <RouterView :productListData="productListData" />
   </div>
 </template>
 
@@ -17,10 +17,22 @@ import FloatButton from "./components/FloatButton.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      productListData: [],
+    };
+  },
   components: {
     GlobalHeader,
     GlobalTabBar,
     FloatButton,
+  },
+  mounted() {
+    const productListData = JSON.parse(
+      window.localStorage.getItem("productListData")
+    );
+    this.productListData = productListData;
+    console.log(this.productListData);
   },
 };
 </script>
