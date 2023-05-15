@@ -54,10 +54,11 @@ export default {
     // 파일 첨부
     getImageUrl(e) {
       const files = e.files;
+      console.log(files.length);
 
       for (const [key, value] of Object.entries(files)) {
         let url = URL.createObjectURL(value);
-        this.imgUrlArray.push(url);
+        this.imgUrlArray.unshift(url);
       }
 
       if (this.imgUrlArray != null) {
@@ -96,11 +97,11 @@ export default {
       };
 
       // 새로 생성된 데이터를 배열에 추가
-      dataArr.push(data);
+      dataArr.unshift(data);
       // localStorage에 저장
       window.localStorage.setItem("productListData", JSON.stringify(dataArr));
+      this.$router.push("/");
     },
   },
-  updated() {},
 };
 </script>

@@ -8,9 +8,8 @@
           aria-label="사진 첨부하기"
         >
           <i class="xi-camera"></i>
-          <span>사진 첨부하기</span>
-          <!-- 첨부된 사진이 있을때 
-          <span>2 / 10</span> -->
+          <span v-if="isAttached === false">사진 첨부하기</span>
+          <span v-else>2 / 10</span>
         </label>
         <input
           type="file"
