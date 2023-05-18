@@ -1,20 +1,22 @@
 <template>
-  <WriteHeader @saveData="saveData()" />
-  <form action="">
-    <AttachPhoto
-      :imgUrlArray="imgUrlArray"
-      :isAttached="isAttached"
-      @getImageUrl="getImageUrl($event)"
-    />
-    <InputGroup
-      @getTitle="getTitle($event)"
-      @getPrice="getPrice($event)"
-      @getContent="getContent($event)"
-      :title="title"
-      :price="price"
-      :content="content"
-    />
-  </form>
+  <div>
+    <WriteHeader @saveData="saveData()" />
+    <form action="">
+      <AttachPhoto
+        :imgUrlArray="imgUrlArray"
+        :isAttached="isAttached"
+        @getImageUrl="getImageUrl($event)"
+      />
+      <InputGroup
+        @getTitle="getTitle($event)"
+        @getPrice="getPrice($event)"
+        @getContent="getContent($event)"
+        :title="title"
+        :price="price"
+        :content="content"
+      />
+    </form>
+  </div>
 </template>
 
 <script>
@@ -45,7 +47,7 @@ export default {
       this.title = value;
     },
     getPrice(value) {
-      this.price = value;
+      this.price = Number(value);
     },
     getContent(value) {
       this.content = value;
