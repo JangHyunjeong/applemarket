@@ -23,6 +23,7 @@
           <i class="xi-close"></i>
         </button>
         <img :src="`${item}`" alt="" />
+        <span class="badge" v-if="idx == 0">대표</span>
       </li>
     </ul>
   </div>
