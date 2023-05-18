@@ -7,6 +7,7 @@
         :imgUrlArrayLength="imgUrlArrayLength"
         :isAttached="isAttached"
         @getImageUrl="getImageUrl($event)"
+        @deletePhoto="deletePhoto($event)"
       />
       <InputGroup
         @getTitle="getTitle($event)"
@@ -52,7 +53,6 @@ export default {
       this.id = 0;
     } else {
       const lastId = this.productListData[0].id;
-      console.log(lastId);
       this.id = lastId + 1;
     }
   },
@@ -85,7 +85,15 @@ export default {
       }
     },
 
-    deleteImage() {},
+    deletePhoto(idx) {
+      this.imgUrlArray.splice(idx, 1);
+      this.imgUrlArrayLength = this.imgUrlArray.length;
+
+      if (this.imgUrlArray == 0) {
+        this.isAttached = false;
+        this.imgUrlArray = [];
+      }
+    },
 
     // 작성된 데이터 저장
     saveData() {

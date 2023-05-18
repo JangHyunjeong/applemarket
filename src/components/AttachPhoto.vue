@@ -19,7 +19,11 @@
         />
       </li>
       <li v-if="isAttached" v-for="(item, idx) in imgUrlArray" :key="idx">
-        <button type="button" class="button-delete">
+        <button
+          type="button"
+          class="button-delete"
+          @click="$emit('deletePhoto', idx)"
+        >
           <i class="xi-close"></i>
         </button>
         <img :src="`${item}`" alt="" />
