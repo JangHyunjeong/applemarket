@@ -4,6 +4,7 @@
     <form action="">
       <AttachPhoto
         :imgUrlArray="imgUrlArray"
+        :imgUrlArrayLength="imgUrlArrayLength"
         :isAttached="isAttached"
         @getImageUrl="getImageUrl($event)"
       />
@@ -33,6 +34,7 @@ export default {
       price: 0,
       content: "",
       imgUrlArray: [],
+      imgUrlArrayLength: 0,
       isAttached: false,
     };
   },
@@ -68,16 +70,22 @@ export default {
     // 파일 첨부
     getImageUrl(e) {
       const files = e.files;
-
-      for (const [key, value] of Object.entries(files)) {
-        let url = URL.createObjectURL(value);
-        this.imgUrlArray.unshift(url);
+      if (files.length <= 10 && this.imgUrlArray.length + files.length <= 10) {
+        for (const [key, value] of Object.entries(files)) {
+          const url = URL.createObjectURL(value);
+          this.imgUrlArray.unshift(url);
+          this.imgUrlArrayLength = this.imgUrlArray.length;
+        }
+      } else {
+        alert("사진은 최대 10장까지 첨부할 수 있습니다.");
       }
 
       if (this.imgUrlArray != null) {
         this.isAttached = true;
       }
     },
+
+    deleteImage() {},
 
     // 작성된 데이터 저장
     saveData() {

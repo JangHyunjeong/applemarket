@@ -9,7 +9,7 @@
         >
           <i class="xi-camera"></i>
           <span v-if="isAttached === false">사진 첨부하기</span>
-          <span v-else>2 / 10</span>
+          <span v-else>{{ imgUrlArrayLength }} / 10</span>
         </label>
         <input
           type="file"
@@ -36,6 +36,7 @@ export default {
   },
   props: {
     imgUrlArray: Array,
+    imgUrlArrayLength: Number,
     isAttached: Boolean,
   },
 };
