@@ -1,5 +1,8 @@
 <template>
-  <header class="global-header" v-if="$route.path == '/view'">
+  <header
+    class="global-header"
+    v-if="$route.path == `/view/${$route.params.id}`"
+  >
     <h1 class="visually-hidden">애플마켓</h1>
     <ul class="left-menu">
       <li>
@@ -36,7 +39,7 @@
     </ul>
   </header>
 
-  <div v-else-if="$route.path == '/write'"></div>
+  <div v-else-if="$route.path == `/write`"></div>
 
   <header class="global-header" v-else>
     <h1 class="visually-hidden">애플마켓</h1>
