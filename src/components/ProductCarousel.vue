@@ -7,19 +7,9 @@
       @swiper="onSwiper"
       @slideChange="onSlideChange"
     >
-      <swiper-slide
-        ><img src="../assets/product-img1.jpg" alt=""
+      <swiper-slide v-for="(item, idx) in data.productImages" :key="idx"
+        ><img :src="`${item}`" alt=""
       /></swiper-slide>
-      <swiper-slide
-        ><img src="../assets/product-img2.jpg" alt=""
-      /></swiper-slide>
-      <swiper-slide
-        ><img src="../assets/product-img1.jpg" alt=""
-      /></swiper-slide>
-      <swiper-slide
-        ><img src="../assets/product-img2.jpg" alt=""
-      /></swiper-slide>
-      ...
     </swiper>
   </div>
 </template>
@@ -38,6 +28,9 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+  },
+  props: {
+    data: Object,
   },
   setup() {
     const onSwiper = () => {};

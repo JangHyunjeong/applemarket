@@ -11,7 +11,7 @@
       v-for="(item, idx) in productListData"
       :key="idx"
     >
-      <RouterLink to="/view" class="product-item-links">
+      <RouterLink :to="`/view/${item.id}`" class="product-item-links">
         <div class="product-item-img">
           <!-- <img src="../assets/product-img1.jpg" alt="맥북" /> -->
           <img :src="`${item.productMainImage}`" :alt="`${item.title}`" />

@@ -1,11 +1,11 @@
 <template>
   <RouterLink to="/" class="user-info-group">
     <div class="avatar">
-      <img src="../assets/user01.jpg" alt="유저명" />
+      <img :src="`${data.userImage}`" :alt="`${data.userId}`" />
     </div>
     <div class="user-info">
-      <strong class="name">토끼가 좋아</strong>
-      <div class="address">중랑구 신내2동</div>
+      <strong class="name">{{ data.userId }}</strong>
+      <div class="address">{{ data.userLocation }}</div>
     </div>
   </RouterLink>
 </template>
@@ -13,5 +13,8 @@
 <script>
 export default {
   name: "UserInfo",
+  props: {
+    data: Object,
+  },
 };
 </script>

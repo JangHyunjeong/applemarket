@@ -99,6 +99,7 @@ export default {
         title: this.title,
         price: this.price,
         content: this.content,
+        category: "전자기기",
         productMainImage: this.imgUrlArray[0],
         productImages: this.imgUrlArray,
         userId: "토끼가 좋아",
