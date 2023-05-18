@@ -28,6 +28,7 @@ export default {
   name: "ProductWrite",
   data() {
     return {
+      id: 0,
       title: "",
       price: 0,
       content: "",
@@ -40,8 +41,19 @@ export default {
     AttachPhoto,
     InputGroup,
   },
-  mounted() {},
-
+  props: {
+    productListData: Array,
+  },
+  created() {
+    // 데이터의 id붙이기
+    if (this.productListData === null) {
+      this.id = 0;
+    } else {
+      const lastId = this.productListData[0].id;
+      console.log(lastId);
+      this.id = lastId + 1;
+    }
+  },
   methods: {
     getTitle(value) {
       this.title = value;
@@ -56,7 +68,6 @@ export default {
     // 파일 첨부
     getImageUrl(e) {
       const files = e.files;
-      console.log(files.length);
 
       for (const [key, value] of Object.entries(files)) {
         let url = URL.createObjectURL(value);
@@ -84,6 +95,7 @@ export default {
       // 하드코딩된 데이터 추후 수정 후 추가하기
       const datetime = new Date();
       const data = {
+        id: this.id,
         title: this.title,
         price: this.price,
         content: this.content,
