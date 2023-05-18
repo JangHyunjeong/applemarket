@@ -28,10 +28,14 @@ export default {
     FloatButton,
   },
   mounted() {
-    const productListData = JSON.parse(
+    this.productListData = JSON.parse(
       window.localStorage.getItem("productListData")
     );
-    this.productListData = productListData;
+  },
+  updated() {
+    this.productListData = JSON.parse(
+      window.localStorage.getItem("productListData")
+    );
   },
 };
 </script>
