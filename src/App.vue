@@ -1,6 +1,6 @@
 <template>
   <div class="layouts">
-    <GlobalHeader />
+    <GlobalHeader @copyUrl="copyUrl" />
 
     <GlobalTabBar v-if="$route.path == '/'" />
 
@@ -36,6 +36,19 @@ export default {
     this.productListData = JSON.parse(
       window.localStorage.getItem("productListData")
     );
+  },
+  methods: {
+    copyUrl() {
+      const urlArea = document.createElement("textarea");
+
+      document.body.appendChild(urlArea);
+      urlArea.value = window.document.location.href;
+      urlArea.select(); //urlArea를 설정
+      document.execCommand("copy"); // 복사
+      document.body.removeChild(urlArea);
+
+      alert("URL이 복사되었습니다."); // 알림창
+    },
   },
 };
 </script>

@@ -27,7 +27,7 @@
 
     <ul class="right-menu">
       <li>
-        <button aria-label="공유하기">
+        <button type="button" aria-label="공유하기" @click="$emit('copyUrl')">
           <i class="xi-share-alt-o" aria-hidden="true"></i>
         </button>
       </li>
