@@ -134,9 +134,10 @@ export default {
           userId: "토끼가 좋아",
           userLocation: "노원구 공릉동",
           userImage: require("../assets/user01.jpg"),
-          chat: 2,
-          wish: 1,
-          views: 100,
+          liked: false,
+          chatCnt: 2,
+          likeCnt: 1,
+          viewCnt: 100,
           datetime: datetime.toLocaleTimeString(),
         };
 
