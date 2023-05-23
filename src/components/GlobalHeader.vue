@@ -41,8 +41,12 @@
         </button>
 
         <div class="detail-menu" v-if="HeaderMenuIsShow">
-          <button type="button" @click="$emit('editPost')">수정하기</button>
-          <button type="button" @click="$emit('deletePost')">삭제하기</button>
+          <button type="button" @click="$emit('editPost', $route.params.id)">
+            수정하기
+          </button>
+          <button type="button" @click="$emit('deletePost', $route.params.id)">
+            삭제하기
+          </button>
         </div>
       </li>
     </ul>

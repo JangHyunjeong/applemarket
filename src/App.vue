@@ -40,6 +40,7 @@ export default {
     );
   },
   updated() {
+    //console.log("updated");
     this.productListData = JSON.parse(
       window.localStorage.getItem("productListData")
     );
@@ -51,8 +52,21 @@ export default {
     },
 
     // 상세 - 글 삭제
-    deletePost() {
-      console.log("글 삭제");
+    deletePost(id) {
+      if (this.productListData.length == 1) {
+        window.localStorage.removeItem("productListData");
+      } else {
+        const newDataList = this.productListData.filter(
+          (item) => item.id != id
+        );
+        this.productListData = newDataList;
+        window.localStorage.setItem(
+          "productListData",
+          JSON.stringify(this.productListData)
+        );
+      }
+      this.$router.push("/");
+      this.HeaderMenuIsShow == false; // 반영안됨
     },
 
     // 상세 - 메뉴 더보기
