@@ -60,14 +60,16 @@ export default {
     getTitle(value) {
       this.title = value;
     },
+
     getPrice(value) {
-      this.price = Number(value);
+      this.price = value;
     },
+
     getContent(value) {
       this.content = value;
     },
 
-    // 파일 첨부
+    // 사진 첨부
     getImageUrl(e) {
       const files = e.files;
       if (files.length <= 10 && this.imgUrlArray.length + files.length <= 10) {
@@ -85,6 +87,7 @@ export default {
       }
     },
 
+    // 사진 삭제
     deletePhoto(idx) {
       this.imgUrlArray.splice(idx, 1);
       this.imgUrlArrayLength = this.imgUrlArray.length;
@@ -95,7 +98,7 @@ export default {
       }
     },
 
-    // 작성된 데이터 저장
+    // 작성된 데이터 저장 (완료버튼 클릭시)
     saveData() {
       let dataArr = [];
       let oldArr = JSON.parse(window.localStorage.getItem("productListData"));
@@ -107,31 +110,42 @@ export default {
         dataArr = oldArr;
       }
 
-      // 새로 생성된 데이터
-      // 하드코딩된 데이터 추후 수정 후 추가하기
-      const datetime = new Date();
-      const data = {
-        id: this.id,
-        title: this.title,
-        price: this.price,
-        content: this.content,
-        category: "전자기기",
-        productMainImage: this.imgUrlArray[0],
-        productImages: this.imgUrlArray,
-        userId: "토끼가 좋아",
-        userLocation: "노원구 공릉동",
-        userImage: require("../assets/user01.jpg"),
-        chat: 2,
-        wish: 1,
-        views: 100,
-        datetime: datetime.toLocaleTimeString(),
-      };
+      // 필수값 처리
+      if (this.imgUrlArrayLength == 0) {
+        alert("사진을 첨부해주세요.");
+      } else if (this.title == "") {
+        alert("제목을 입력해주세요.");
+      } else if (this.price == "") {
+        alert("가격을 입력해주세요.");
+      } else if (this.content == "") {
+        alert("내용을 입력해주세요.");
+      } else {
+        // 새로 생성된 데이터
+        // 하드코딩된 데이터 추후 수정 후 추가하기
+        const datetime = new Date();
+        const data = {
+          id: this.id,
+          title: this.title,
+          price: this.price,
+          content: this.content,
+          category: "전자기기",
+          productMainImage: this.imgUrlArray[0],
+          productImages: this.imgUrlArray,
+          userId: "토끼가 좋아",
+          userLocation: "노원구 공릉동",
+          userImage: require("../assets/user01.jpg"),
+          chat: 2,
+          wish: 1,
+          views: 100,
+          datetime: datetime.toLocaleTimeString(),
+        };
 
-      // 새로 생성된 데이터를 배열에 추가
-      dataArr.unshift(data);
-      // localStorage에 저장
-      window.localStorage.setItem("productListData", JSON.stringify(dataArr));
-      this.$router.push("/");
+        // 새로 생성된 데이터를 배열에 추가
+        dataArr.unshift(data);
+        // localStorage에 저장
+        window.localStorage.setItem("productListData", JSON.stringify(dataArr));
+        this.$router.push("/");
+      }
     },
   },
 };

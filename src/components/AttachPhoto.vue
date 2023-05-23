@@ -16,6 +16,7 @@
           multiple
           id="buttonAttach"
           @change="$emit('getImageUrl', $event.target)"
+          required="true"
         />
       </li>
       <li v-if="isAttached" v-for="(item, idx) in imgUrlArray" :key="idx">

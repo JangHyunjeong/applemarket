@@ -1,6 +1,30 @@
 .input-group {
   padding: 0 20px;
 
+  .price-input {
+    position: relative;
+
+    .won {
+      &.color-gray {
+        color: $secondary;
+      }
+
+      position: absolute;
+      left: 20px;
+      top: 0;
+      width: 100%;
+      border: 0;
+      height: 50px;
+      line-height: 49px;
+      font-size: 20px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    input {
+      padding-left: 50px;
+    }
+  }
+
   input {
     position: relative;
     display: block;
