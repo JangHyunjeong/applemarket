@@ -21,6 +21,7 @@
 
     li {
       margin-right: 12px;
+      position: relative;
 
       &:last-child {
         margin-right: 0;
@@ -66,12 +67,13 @@
 
     li {
       margin-right: 12px;
+      position: relative;
 
       &:last-child {
         margin-right: 0;
       }
 
-      button:not(.button-submit) {
+      & > button:not(.button-submit) {
         width: 30px;
         height: 30px;
         font-size: 24px;
@@ -84,6 +86,25 @@
         color: $red;
         font-weight: 500;
         padding: 0 $side-white-space;
+      }
+
+      .detail-menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        width: 100px;
+        border: 1px solid $border;
+        background-color: $white;
+
+        button {
+          display: block;
+          width: 100%;
+          height: 40px;
+          line-height: 40px;
+          border-bottom: 1px solid $border;
+          letter-spacing: -0.04em;
+          font-size: 15px;
+        }
       }
     }
   }

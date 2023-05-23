@@ -1,6 +1,12 @@
 <template>
   <div class="layouts">
-    <GlobalHeader @copyUrl="copyUrl" />
+    <GlobalHeader
+      @copyUrl="copyUrl"
+      @editPost="editPost"
+      @deletePost="deletePost"
+      @toggleHeaderMenu="toggleHeaderMenu"
+      :HeaderMenuIsShow="HeaderMenuIsShow"
+    />
 
     <GlobalTabBar v-if="$route.path == '/'" />
 
@@ -20,6 +26,7 @@ export default {
   data() {
     return {
       productListData: [],
+      HeaderMenuIsShow: false,
     };
   },
   components: {
@@ -38,6 +45,26 @@ export default {
     );
   },
   methods: {
+    // 상세 - 글 수정
+    editPost() {
+      console.log("글 수정");
+    },
+
+    // 상세 - 글 삭제
+    deletePost() {
+      console.log("글 삭제");
+    },
+
+    // 상세 - 메뉴 더보기
+    toggleHeaderMenu() {
+      if (this.HeaderMenuIsShow == false) {
+        this.HeaderMenuIsShow = true;
+      } else {
+        this.HeaderMenuIsShow = false;
+      }
+    },
+
+    // 상세  -공유하기
     copyUrl() {
       const urlArea = document.createElement("textarea");
 

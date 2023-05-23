@@ -32,9 +32,18 @@
         </button>
       </li>
       <li>
-        <button aria-label="메뉴 더보기">
-          <i class="xi-ellipsis-v" aria-hidden="true"></i>
+        <button type="button" aria-label="메뉴 더보기">
+          <i
+            class="xi-ellipsis-v"
+            aria-hidden="true"
+            @click="$emit('toggleHeaderMenu')"
+          ></i>
         </button>
+
+        <div class="detail-menu" v-if="HeaderMenuIsShow">
+          <button type="button" @click="$emit('editPost')">수정하기</button>
+          <button type="button" @click="$emit('deletePost')">삭제하기</button>
+        </div>
       </li>
     </ul>
   </header>
@@ -75,5 +84,11 @@
 <script>
 export default {
   name: "GlobalHeader",
+  props: {
+    HeaderMenuIsShow: Boolean,
+  },
+  data() {
+    return {};
+  },
 };
 </script>
