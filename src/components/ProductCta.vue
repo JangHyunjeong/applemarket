@@ -4,9 +4,13 @@
       <button
         class="button-wish"
         aria-label="위시리스트에 추가"
-        @click="toggleWish"
+        @click="$emit('toggleWish')"
       >
-        <i v-if="data.liked == false" class="xi-heart-o" aria-hidden="true"></i>
+        <i
+          v-if="userInfo.liked.includes(Number($route.params.id)) == false"
+          class="xi-heart-o"
+          aria-hidden="true"
+        ></i>
         <i v-else class="xi-heart" aria-hidden="true"></i>
       </button>
       <div class="divider" aria-hidden="true"></div>
@@ -30,16 +34,8 @@ export default {
   },
   props: {
     data: Object,
+    userInfo: Object,
   },
-  methods: {
-    toggleWish() {
-      // 로컬스토린지 내 데이터 추후 변경
-      if (this.data.liked == false) {
-        this.data.liked = true;
-      } else {
-        this.data.liked = false;
-      }
-    },
-  },
+  methods: {},
 };
 </script>

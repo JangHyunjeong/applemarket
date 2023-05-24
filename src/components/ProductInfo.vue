@@ -15,9 +15,9 @@
     </div>
 
     <ul class="product-info-popular">
-      <li>채팅 {{ data.chat }}</li>
-      <li>관심 {{ data.wish }}</li>
-      <li>조회 {{ data.views }}</li>
+      <li>채팅 {{ data.chatCnt }}</li>
+      <li>관심 {{ data.likeCnt }}</li>
+      <li>조회 {{ data.viewCnt }}</li>
     </ul>
   </div>
 </template>

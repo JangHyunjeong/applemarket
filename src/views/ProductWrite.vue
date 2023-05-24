@@ -48,6 +48,7 @@ export default {
   },
   props: {
     productListData: Array,
+    userInfo: Object,
   },
   methods: {
     getTitle(value) {
@@ -102,10 +103,9 @@ export default {
         category: "전자기기",
         productMainImage: this.imgUrlArray[0],
         productImages: this.imgUrlArray,
-        userId: "토끼가 좋아",
-        userLocation: "노원구 공릉동",
-        userImage: require("../assets/user01.jpg"),
-        liked: false,
+        userId: this.userInfo.id,
+        userLocation: this.userInfo.location,
+        userImage: this.userInfo.image,
         chatCnt: 2,
         likeCnt: 1,
         viewCnt: 100,

@@ -7,7 +7,11 @@
 
   <ProductInfo :data="data" />
 
-  <ProductCta :data="data" />
+  <ProductCta
+    :data="data"
+    :userInfo="userInfo"
+    @toggleWish="$emit('toggleWish')"
+  />
 </template>
 
 <script>
@@ -32,6 +36,7 @@ export default {
   },
   props: {
     productListData: Array,
+    userInfo: Object,
   },
   mounted() {
     // 사용할 데이터만 넘기기

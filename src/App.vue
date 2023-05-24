@@ -14,6 +14,8 @@
 
     <RouterView
       :productListData="productListData"
+      :userInfo="userInfo"
+      @toggleWish="toggleWish"
       @toggleHeaderMenu="toggleHeaderMenu"
     />
   </div>
@@ -30,6 +32,12 @@ export default {
     return {
       productListData: [],
       HeaderMenuIsShow: false,
+      userInfo: {
+        id: "토까가좋아",
+        location: "노원구 공릉동",
+        liked: [0],
+        image: require("./assets/user01.jpg"),
+      },
     };
   },
   components: {
@@ -48,6 +56,25 @@ export default {
     );
   },
   methods: {
+    // 좋아요
+    toggleWish() {
+      const id = Number(this.$route.params.id);
+      let likedList = this.userInfo.liked;
+
+      const target = likedList.find((item) => {
+        if (item == id) {
+          return true;
+        }
+      });
+      const idIdx = likedList.indexOf(target);
+
+      if (likedList.includes(id)) {
+        likedList.splice(idIdx, 1);
+      } else {
+        likedList.push(id);
+      }
+    },
+
     // 상세 - 글 수정페이지로 이동
     editPost() {
       this.$router.push(`/write/${this.$route.params.id}`);
