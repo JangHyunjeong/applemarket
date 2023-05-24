@@ -40,7 +40,6 @@ export default {
     );
   },
   updated() {
-    //console.log("updated");
     this.productListData = JSON.parse(
       window.localStorage.getItem("productListData")
     );
@@ -66,7 +65,7 @@ export default {
         );
       }
       this.$router.push("/");
-      this.HeaderMenuIsShow == false; // 반영안됨
+      this.HeaderMenuIsShow = false;
     },
 
     // 상세 - 메뉴 더보기
@@ -93,7 +92,5 @@ export default {
   },
 };
 </script>
-
-<style></style>
 
 <style></style>
