@@ -30,7 +30,7 @@ export default {
   name: "ProductWrite",
   data() {
     return {
-      id: null,
+      id: 0,
       title: "",
       price: 0,
       content: "",
@@ -46,15 +46,6 @@ export default {
   },
   props: {
     productListData: Array,
-  },
-  created() {
-    // 데이터의 id붙이기
-    if (this.productListData === null) {
-      this.id = 0;
-    } else {
-      const lastId = this.productListData[0].id;
-      this.id = lastId + 1;
-    }
   },
   methods: {
     getTitle(value) {
@@ -148,12 +139,43 @@ export default {
         this.$router.push("/");
       }
     },
+
+    // 수정하기 데이터 불러오기
+    getCustomData() {},
   },
+
   mounted() {
     if (this.$route.params.id) {
-      console.log("수정모드");
+      this.id = this.$route.params.id;
+
+      // 수정할 데이터 불러오기
+      let customList = JSON.parse(
+        window.localStorage.getItem("productListData")
+      );
+
+      console.log(customList);
+
+      const findItem = function findItem(item) {
+        if (item.id === this.id) {
+          return true;
+        }
+      };
+
+      const target = customList.find(findItem);
+      const findIdx = customList.indexOf(target);
+      console.log("findIdx :", findIdx);
+      console.log("target :", target);
+      this.title = customList[findIdx].title;
+      this.contents = customList[findIdx].contents;
     } else {
       console.log("작성모드");
+      // 데이터의 id붙이기
+      if (this.productListData === null) {
+        this.id = 0;
+      } else {
+        const lastId = this.productListData[0].id;
+        this.id = lastId + 1;
+      }
     }
   },
 };
