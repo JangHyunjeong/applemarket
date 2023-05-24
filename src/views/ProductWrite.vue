@@ -75,7 +75,7 @@ export default {
       if (files.length <= 10 && this.imgUrlArray.length + files.length <= 10) {
         for (const [key, value] of Object.entries(files)) {
           const url = URL.createObjectURL(value);
-          this.imgUrlArray.unshift(url);
+          this.imgUrlArray.push(url);
           this.imgUrlArrayLength = this.imgUrlArray.length;
         }
       } else {
