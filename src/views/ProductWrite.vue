@@ -30,7 +30,7 @@ export default {
   name: "ProductWrite",
   data() {
     return {
-      id: 0,
+      id: null,
       title: "",
       price: 0,
       content: "",
@@ -148,6 +148,13 @@ export default {
         this.$router.push("/");
       }
     },
+  },
+  mounted() {
+    if (this.$route.params.id) {
+      console.log("수정모드");
+    } else {
+      console.log("작성모드");
+    }
   },
 };
 </script>

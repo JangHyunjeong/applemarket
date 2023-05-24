@@ -52,7 +52,11 @@
     </ul>
   </header>
 
-  <div v-else-if="$route.path == `/write`"></div>
+  <div
+    v-else-if="
+      $route.path == `/write` || $route.path == `/write/${$route.params.id}`
+    "
+  ></div>
 
   <header class="global-header" v-else>
     <h1 class="visually-hidden">애플마켓</h1>

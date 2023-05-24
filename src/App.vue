@@ -45,9 +45,9 @@ export default {
     );
   },
   methods: {
-    // 상세 - 글 수정
+    // 상세 - 글 수정페이지로 이동
     editPost() {
-      console.log("글 수정");
+      this.$router.push(`/write/${this.$route.params.id}`);
     },
 
     // 상세 - 글 삭제

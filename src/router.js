@@ -13,7 +13,7 @@ const routes = [
     component: ProductView,
   },
   {
-    path: "/write",
+    path: "/write/:id?",
     component: ProductWrite,
   },
 ];
