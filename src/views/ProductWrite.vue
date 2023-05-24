@@ -1,6 +1,6 @@
 <template>
   <div>
-    <WriteHeader @saveData="saveData()" />
+    <WriteHeader @saveData="saveData()" @saveCustomData="saveCustomData()" />
     <form action="">
       <AttachPhoto
         :imgUrlArray="imgUrlArray"
@@ -32,11 +32,13 @@ export default {
     return {
       id: 0,
       title: "",
-      price: 0,
+      price: null,
       content: "",
       imgUrlArray: [],
       imgUrlArrayLength: 0,
       isAttached: false,
+      customIdx: null,
+      definedData: null,
     };
   },
   components: {
@@ -89,6 +91,28 @@ export default {
       }
     },
 
+    // define post Data
+    defineData() {
+      const datetime = new Date();
+      this.definedData = {
+        id: this.id,
+        title: this.title,
+        price: this.price,
+        content: this.content,
+        category: "전자기기",
+        productMainImage: this.imgUrlArray[0],
+        productImages: this.imgUrlArray,
+        userId: "토끼가 좋아",
+        userLocation: "노원구 공릉동",
+        userImage: require("../assets/user01.jpg"),
+        liked: false,
+        chatCnt: 2,
+        likeCnt: 1,
+        viewCnt: 100,
+        datetime: datetime.toLocaleTimeString(),
+      };
+    },
+
     // 작성된 데이터 저장 (완료버튼 클릭시)
     saveData() {
       let dataArr = [];
@@ -111,29 +135,11 @@ export default {
       } else if (this.content == "") {
         alert("내용을 입력해주세요.");
       } else {
-        // 새로 생성된 데이터
-        // 하드코딩된 데이터 추후 수정 후 추가하기
-        const datetime = new Date();
-        const data = {
-          id: this.id,
-          title: this.title,
-          price: this.price,
-          content: this.content,
-          category: "전자기기",
-          productMainImage: this.imgUrlArray[0],
-          productImages: this.imgUrlArray,
-          userId: "토끼가 좋아",
-          userLocation: "노원구 공릉동",
-          userImage: require("../assets/user01.jpg"),
-          liked: false,
-          chatCnt: 2,
-          likeCnt: 1,
-          viewCnt: 100,
-          datetime: datetime.toLocaleTimeString(),
-        };
+        // 새롭게 생성된 게시글 데이터 정의
+        this.defineData();
 
-        // 새로 생성된 데이터를 배열에 추가
-        dataArr.unshift(data);
+        // 기존 배열에 추가
+        dataArr.unshift(this.definedData);
         // localStorage에 저장
         window.localStorage.setItem("productListData", JSON.stringify(dataArr));
         this.$router.push("/");
@@ -141,34 +147,67 @@ export default {
     },
 
     // 수정하기 데이터 불러오기
-    getCustomData() {},
-  },
-
-  mounted() {
-    if (this.$route.params.id) {
-      this.id = this.$route.params.id;
-
-      // 수정할 데이터 불러오기
+    getCustomData() {
       let customList = JSON.parse(
         window.localStorage.getItem("productListData")
       );
 
-      console.log(customList);
-
-      const findItem = function findItem(item) {
-        if (item.id === this.id) {
+      const target = customList.find((item) => {
+        if (item.id == this.id) {
           return true;
         }
-      };
+      });
+      this.customIdx = customList.indexOf(target);
 
-      const target = customList.find(findItem);
-      const findIdx = customList.indexOf(target);
-      console.log("findIdx :", findIdx);
-      console.log("target :", target);
-      this.title = customList[findIdx].title;
-      this.contents = customList[findIdx].contents;
+      this.title = customList[this.customIdx].title;
+      this.price = customList[this.customIdx].price;
+      this.content = customList[this.customIdx].content;
+      this.imgUrlArray = customList[this.customIdx].productImages;
+      this.imgUrlArrayLength = customList[this.customIdx].productImages;
+    },
+
+    // 수정하기
+    saveCustomData() {
+      let dataArr = [];
+      let oldArr = JSON.parse(window.localStorage.getItem("productListData"));
+
+      // localStorage상에 productListData 유무 체크
+      if (oldArr === null) {
+        oldArr = [];
+      } else {
+        dataArr = oldArr;
+      }
+
+      // 필수값 처리
+      if (this.imgUrlArrayLength == 0) {
+        alert("사진을 첨부해주세요.");
+      } else if (this.title == "") {
+        alert("제목을 입력해주세요.");
+      } else if (this.price == "") {
+        alert("가격을 입력해주세요.");
+      } else if (this.content == "") {
+        alert("내용을 입력해주세요.");
+      } else {
+        // 수정 데이터 정의
+        this.defineData();
+        dataArr.splice(this.customIdx, 1, this.definedData);
+
+        // localStorage에 저장
+        window.localStorage.setItem("productListData", JSON.stringify(dataArr));
+
+        // url변경 및 수정하기 팝업 제거
+        this.$router.push(`/view/${this.id}`);
+        this.$emit("toggleHeaderMenu");
+      }
+    },
+  },
+
+  mounted() {
+    if (this.$route.params.id) {
+      // 수정할 데이터 불러오기
+      this.id = Number(this.$route.params.id);
+      this.getCustomData();
     } else {
-      console.log("작성모드");
       // 데이터의 id붙이기
       if (this.productListData === null) {
         this.id = 0;

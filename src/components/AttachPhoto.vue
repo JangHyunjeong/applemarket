@@ -19,7 +19,11 @@
           required="true"
         />
       </li>
-      <li v-if="isAttached" v-for="(item, idx) in imgUrlArray" :key="idx">
+      <li
+        v-if="isAttached || imgUrlArray != []"
+        v-for="(item, idx) in imgUrlArray"
+        :key="idx"
+      >
         <button
           type="button"
           class="button-delete"

@@ -19,6 +19,16 @@
     <ul class="right-menu">
       <li>
         <button
+          v-if="$route.params.id"
+          @click="$emit('saveCustomData')"
+          class="button-submit"
+          aria-label="수정 완료"
+        >
+          수정완료
+        </button>
+
+        <button
+          v-else
           @click="$emit('saveData')"
           class="button-submit"
           aria-label="글쓰기 작성완료"

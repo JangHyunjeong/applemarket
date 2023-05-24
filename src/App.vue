@@ -12,7 +12,10 @@
 
     <FloatButton v-if="$route.path == '/'" />
 
-    <RouterView :productListData="productListData" />
+    <RouterView
+      :productListData="productListData"
+      @toggleHeaderMenu="toggleHeaderMenu"
+    />
   </div>
 </template>
 
