@@ -63,7 +63,7 @@
     <ul class="left-menu">
       <li>
         <button arial-lable="내 동네" class="button-local">
-          중화동
+          {{ userInfo.locationDong }}
           <i class="xi-angle-down"></i>
         </button>
       </li>
@@ -94,6 +94,7 @@ export default {
   name: "GlobalHeader",
   props: {
     HeaderMenuIsShow: Boolean,
+    userInfo: Object,
   },
   data() {
     return {};

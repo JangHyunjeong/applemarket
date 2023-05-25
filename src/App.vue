@@ -6,6 +6,7 @@
       @deletePost="deletePost"
       @toggleHeaderMenu="toggleHeaderMenu"
       :HeaderMenuIsShow="HeaderMenuIsShow"
+      :userInfo="userInfo"
     />
 
     <GlobalTabBar v-if="$route.path == '/'" />
@@ -35,6 +36,7 @@ export default {
       userInfo: {
         id: "토까가좋아",
         location: "노원구 공릉동",
+        locationDong: "공릉동",
         liked: [0],
         image: require("./assets/user01.jpg"),
       },
