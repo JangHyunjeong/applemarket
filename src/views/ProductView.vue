@@ -43,7 +43,7 @@ export default {
   name: "ProductView",
   data() {
     return {
-      data: "",
+      data: {},
       productImgModalIsShow: false,
     };
   },
@@ -72,7 +72,6 @@ export default {
     this.productListData.find((item, idx) => {
       if (item.id === Number(route.params.id)) {
         this.data = this.productListData[idx];
-        console.log(item.id);
       }
     });
   },
