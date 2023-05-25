@@ -1,20 +1,30 @@
 <template>
-  <RouterLink to="/" class="user-info-group">
+  <div class="user-info-group">
     <div class="avatar">
-      <img :src="`${data.userImage}`" :alt="`${data.userId}`" />
+      <img :src="userImage" :alt="userId" />
     </div>
     <div class="user-info">
-      <strong class="name">{{ data.userId }}</strong>
-      <div class="address">{{ data.userLocation }}</div>
+      <strong class="name">{{ userId }}</strong>
+      <div class="address">{{ userLocation }}</div>
     </div>
-  </RouterLink>
-</template>
 
+    <button type="buton" class="button-primary button-h38" v-if="editButton">
+      정보수정
+    </button>
+  </div>
+</template>
 <script>
 export default {
   name: "UserInfo",
   props: {
-    data: Object,
+    //data: Object,
+    userImage: String,
+    userId: String,
+    userLocation: String,
+    editButton: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>

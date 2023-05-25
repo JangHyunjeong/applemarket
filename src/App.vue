@@ -9,7 +9,11 @@
       :userInfo="userInfo"
     />
 
-    <GlobalTabBar v-if="$route.path == '/'" />
+    <GlobalTabBar
+      v-if="
+        $route.path == '/' || $route.path == '/mypage' || $route.path == '/chat'
+      "
+    />
 
     <FloatButton v-if="$route.path == '/'" />
 

@@ -7,7 +7,12 @@
     @openModal="openModal"
   />
 
-  <UserInfoVue :data="data" />
+  <UserInfo
+    :userImage="`${data.userImage}`"
+    :userId="`${data.userId}`"
+    :userLocation="`${data.userLocation}`"
+  />
+  <!-- :userImage="`${data.userImage}`" :userId="`${data.userId}`" -->
 
   <ProductInfo :data="data" />
 
@@ -26,7 +31,7 @@
 
 <script>
 import { useRoute } from "vue-router";
-import UserInfoVue from "@/components/UserInfo.vue";
+import UserInfo from "@/components/UserInfo.vue";
 import ProductInfo from "@/components/ProductInfo.vue";
 import ProductCta from "@/components/ProductCta.vue";
 import ProductCarousel from "@/components/ProductCarousel.vue";
@@ -41,7 +46,7 @@ export default {
     };
   },
   components: {
-    UserInfoVue,
+    UserInfo,
     ProductInfo,
     ProductCta,
     ProductCarousel,

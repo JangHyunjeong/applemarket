@@ -9,6 +9,7 @@
   border-bottom: 1px solid $border;
 
   .avatar {
+    flex-shrink: 0;
     width: $avatar-width;
     height: $avatar-height;
     border-radius: 50%;
@@ -25,6 +26,7 @@
   .user-info {
     width: calc(100% - #{$avatar-width});
     padding-left: 10px;
+    padding-right: 10px;
 
     .name {
       display: block;
@@ -37,5 +39,9 @@
       font-size: 12px;
       color: $secondary;
     }
+  }
+
+  button {
+    flex-shrink: 0;
   }
 }
