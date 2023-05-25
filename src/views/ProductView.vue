@@ -1,32 +1,34 @@
 <template>
-  <h1 class="visually-hidden">상품상세 페이지</h1>
+  <div>
+    <h1 class="visually-hidden">상품상세 페이지</h1>
 
-  <ProductCarousel
-    :data="data"
-    :productImgModalIsShow="productImgModalIsShow"
-    @openModal="openModal"
-  />
+    <ProductCarousel
+      :data="data"
+      :productImgModalIsShow="productImgModalIsShow"
+      @openModal="openModal"
+    />
 
-  <UserInfo
-    :userImage="`${data.userImage}`"
-    :userId="`${data.userId}`"
-    :userLocation="`${data.userLocation}`"
-  />
-  <!-- :userImage="`${data.userImage}`" :userId="`${data.userId}`" -->
+    <UserInfo
+      :userImage="`${data.userImage}`"
+      :userId="`${data.userId}`"
+      :userLocation="`${data.userLocation}`"
+    />
+    <!-- :userImage="`${data.userImage}`" :userId="`${data.userId}`" -->
 
-  <ProductInfo :data="data" />
+    <ProductInfo :data="data" />
 
-  <ProductImgModal
-    :data="data"
-    :productImgModalIsShow="productImgModalIsShow"
-    @closeModal="closeModal"
-  />
+    <ProductImgModal
+      :data="data"
+      :productImgModalIsShow="productImgModalIsShow"
+      @closeModal="closeModal"
+    />
 
-  <ProductCta
-    :data="data"
-    :userInfo="userInfo"
-    @toggleWish="$emit('toggleWish')"
-  />
+    <ProductCta
+      :data="data"
+      :userInfo="userInfo"
+      @toggleWish="$emit('toggleWish')"
+    />
+  </div>
 </template>
 
 <script>
