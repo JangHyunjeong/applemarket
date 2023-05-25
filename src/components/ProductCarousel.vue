@@ -7,7 +7,10 @@
       @swiper="onSwiper"
       @slideChange="onSlideChange"
     >
-      <swiper-slide v-for="(item, idx) in data.productImages" :key="idx"
+      <swiper-slide
+        v-for="(item, idx) in data.productImages"
+        :key="idx"
+        @click="$emit('openModal')"
         ><img :src="`${item}`" alt=""
       /></swiper-slide>
     </swiper>
@@ -31,6 +34,7 @@ export default {
   },
   props: {
     data: Object,
+    productImgModalIsShow: Boolean,
   },
   setup() {
     const onSwiper = () => {};

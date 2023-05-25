@@ -1,11 +1,21 @@
 <template>
   <h1 class="visually-hidden">상품상세 페이지</h1>
 
-  <ProductCarousel :data="data" />
+  <ProductCarousel
+    :data="data"
+    :productImgModalIsShow="productImgModalIsShow"
+    @openModal="openModal"
+  />
 
   <UserInfoVue :data="data" />
 
   <ProductInfo :data="data" />
+
+  <ProductImgModal
+    :data="data"
+    :productImgModalIsShow="productImgModalIsShow"
+    @closeModal="closeModal"
+  />
 
   <ProductCta
     :data="data"
@@ -20,12 +30,14 @@ import UserInfoVue from "@/components/UserInfo.vue";
 import ProductInfo from "@/components/ProductInfo.vue";
 import ProductCta from "@/components/ProductCta.vue";
 import ProductCarousel from "@/components/ProductCarousel.vue";
+import ProductImgModal from "@/components/ProductImgModal.vue";
 
 export default {
   name: "ProductView",
   data() {
     return {
       data: "",
+      productImgModalIsShow: false,
     };
   },
   components: {
@@ -33,10 +45,19 @@ export default {
     ProductInfo,
     ProductCta,
     ProductCarousel,
+    ProductImgModal,
   },
   props: {
     productListData: Array,
     userInfo: Object,
+  },
+  methods: {
+    openModal() {
+      this.productImgModalIsShow = true;
+    },
+    closeModal() {
+      this.productImgModalIsShow = false;
+    },
   },
   mounted() {
     // 사용할 데이터만 넘기기
