@@ -31,7 +31,12 @@
       />
     </div>
 
-    <Join v-else @getUserName="getUserName($event)" @join="join" />
+    <Join
+      v-else
+      @getUserName="getUserName($event)"
+      @getUserId="getUserId($event)"
+      @join="join"
+    />
   </div>
 </template>
 
@@ -47,7 +52,8 @@ export default {
     return {
       productListData: [],
       HeaderMenuIsShow: false,
-      userName: null,
+      userName: "",
+      userId: "",
       userInfo: null,
     };
   },
@@ -71,20 +77,31 @@ export default {
   },
   methods: {
     // 회원가입
+    getUserId(value) {
+      this.userId = value;
+    },
     getUserName(value) {
       this.userName = value;
-      console.log(this.userName);
     },
     join() {
-      (this.userInfo = {
-        id: this.userName,
-        nickName: this.userName,
-        location: "노원구 공릉동",
-        locationDong: "공릉동",
-        liked: [],
-        image: null,
-      }),
-        window.localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
+      if (this.userId == "") {
+        alert("아이디를 입력해주세요.");
+      } else if (this.userName == "") {
+        alert("닉네임을 입력해주세요.");
+      } else {
+        (this.userInfo = {
+          id: this.userId,
+          nickName: this.userName,
+          location: "노원구 공릉동",
+          locationDong: "공릉동",
+          liked: [],
+          image: null,
+        }),
+          window.localStorage.setItem(
+            "userInfo",
+            JSON.stringify(this.userInfo)
+          );
+      }
     },
 
     // 마이페이지 - 정보수정

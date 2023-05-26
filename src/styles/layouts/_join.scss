@@ -11,7 +11,11 @@
   }
 
   .button-primary {
-    margin-top: 30px;
+    margin-top: 40px;
     width: 100%;
+  }
+
+  input + label {
+    margin-top: 30px;
   }
 }
