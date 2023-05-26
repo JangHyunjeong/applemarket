@@ -68,8 +68,6 @@ export default {
     this.productListData = JSON.parse(
       window.localStorage.getItem("productListData")
     );
-
-    this.userInfo = JSON.parse(window.localStorage.getItem("userInfo"));
   },
   methods: {
     // 회원가입
@@ -83,10 +81,28 @@ export default {
         nickName: this.userName,
         location: "노원구 공릉동",
         locationDong: "공릉동",
-        liked: [1, 2],
-        image: require("./assets/user01.jpg"),
+        liked: [],
+        image: null,
       }),
         window.localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
+    },
+
+    // 마이페이지 - 정보수정
+    getUserImage(target) {
+      if (target != undefined) {
+        const file = target.files[0];
+        const url = URL.createObjectURL(file);
+        console.log(url);
+        this.userInfo.image = url;
+      }
+    },
+    getUserNickName(value) {
+      this.userInfo.id = value;
+      this.userInfo.nickName = value;
+    },
+    saveMyInfo() {
+      window.localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
+      alert("수정완료");
     },
 
     // 좋아요
@@ -152,17 +168,6 @@ export default {
 
       alert("URL이 복사되었습니다."); // 알림창
     },
-
-    // 마이페이지 - 정보수정
-    getUserImage(value) {
-      this.userInfo.image = value;
-      console.log(this.userInfo.image);
-    },
-    getUserNickName(value) {
-      this.userInfo.nickName = value;
-      console.log(this.userInfo.nickName);
-    },
-    saveMyInfo() {},
   },
 };
 </script>

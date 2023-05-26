@@ -2,6 +2,7 @@
   <div class="my-info">
     <div class="editable-avatar">
       <label for="editable-avatar">
+        <i class="xi-camera" aria-hidden="true"></i>
         <img
           v-if="userInfo.image == null"
           src="../assets/img-user-default.png"
@@ -13,7 +14,7 @@
         type="file"
         id="editable-avatar"
         class="visually-hidden"
-        @input="$emit('getUserImage', $event.target.value)"
+        @change="$emit('getUserImage', $event.target)"
       />
     </div>
 
