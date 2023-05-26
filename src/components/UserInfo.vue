@@ -1,7 +1,12 @@
 <template>
   <div class="user-info-group">
     <div class="avatar">
-      <img :src="userImage" :alt="userNickName" />
+      <img
+        v-if="userImage == null"
+        src="../assets/img-user-default.png"
+        alt=""
+      />
+      <img v-else :src="userImage" :alt="userNickName" />
     </div>
     <div class="user-info">
       <strong class="name">{{ userNickName }}</strong>
