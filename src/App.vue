@@ -1,31 +1,37 @@
 <template>
-  <div class="layouts">
-    <GlobalHeader
-      @copyUrl="copyUrl"
-      @editPost="editPost"
-      @deletePost="deletePost"
-      @toggleHeaderMenu="toggleHeaderMenu"
-      @saveMyInfo="saveMyInfo"
-      :HeaderMenuIsShow="HeaderMenuIsShow"
-      :userInfo="userInfo"
-    />
+  <div>
+    <div class="layouts" v-if="userInfo">
+      <GlobalHeader
+        @copyUrl="copyUrl"
+        @editPost="editPost"
+        @deletePost="deletePost"
+        @toggleHeaderMenu="toggleHeaderMenu"
+        @saveMyInfo="saveMyInfo"
+        :HeaderMenuIsShow="HeaderMenuIsShow"
+        :userInfo="userInfo"
+      />
 
-    <GlobalTabBar
-      v-if="
-        $route.path == '/' || $route.path == '/mypage' || $route.path == '/chat'
-      "
-    />
+      <GlobalTabBar
+        v-if="
+          $route.path == '/' ||
+          $route.path == '/mypage' ||
+          $route.path == '/chat'
+        "
+      />
 
-    <FloatButton v-if="$route.path == '/'" />
+      <FloatButton v-if="$route.path == '/'" />
 
-    <RouterView
-      :productListData="productListData"
-      :userInfo="userInfo"
-      @toggleWish="toggleWish"
-      @toggleHeaderMenu="toggleHeaderMenu"
-      @getUserImage="getUserImage($event)"
-      @getUserNickName="getUserNickName($event)"
-    />
+      <RouterView
+        :productListData="productListData"
+        :userInfo="userInfo"
+        @toggleWish="toggleWish"
+        @toggleHeaderMenu="toggleHeaderMenu"
+        @getUserImage="getUserImage($event)"
+        @getUserNickName="getUserNickName($event)"
+      />
+    </div>
+
+    <Join v-else />
   </div>
 </template>
 
@@ -33,6 +39,7 @@
 import GlobalHeader from "./components/GlobalHeader.vue";
 import GlobalTabBar from "./components/GlobalTabBar.vue";
 import FloatButton from "./components/FloatButton.vue";
+import Join from "./components/Join.vue";
 
 export default {
   name: "App",
@@ -40,20 +47,21 @@ export default {
     return {
       productListData: [],
       HeaderMenuIsShow: false,
-      userInfo: {
-        id: "test",
-        nickName: "토끼가좋아",
-        location: "노원구 공릉동",
-        locationDong: "공릉동",
-        liked: [1, 2],
-        image: require("./assets/user01.jpg"),
-      },
+      // userInfo: {
+      //   id: "test",
+      //   nickName: "토끼가좋아",
+      //   location: "노원구 공릉동",
+      //   locationDong: "공릉동",
+      //   liked: [1, 2],
+      //   image: require("./assets/user01.jpg"),
+      // },
     };
   },
   components: {
     GlobalHeader,
     GlobalTabBar,
     FloatButton,
+    Join,
   },
   mounted() {
     this.productListData = JSON.parse(
