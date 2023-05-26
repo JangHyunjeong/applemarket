@@ -18,8 +18,9 @@
     </div>
 
     <div class="editable-inputs">
-      <label for="nickName">닉네임</label>
+      <label for="nickName" class="label-title">닉네임</label>
       <input
+        class="input-basic h50"
         id="nickName"
         type="text"
         :value="userInfo.nickName"
