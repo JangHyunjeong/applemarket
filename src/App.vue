@@ -109,17 +109,20 @@ export default {
       if (target != undefined) {
         const file = target.files[0];
         const url = URL.createObjectURL(file);
-        console.log(url);
         this.userInfo.image = url;
       }
     },
     getUserNickName(value) {
-      this.userInfo.id = value;
       this.userInfo.nickName = value;
     },
     saveMyInfo() {
-      window.localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
-      alert("수정완료");
+      if (this.userInfo.nickName == "") {
+        alert("닉네임을 입력해주세요");
+      } else {
+        window.localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
+        alert("정보수정이 완료되었습니다.");
+        this.$router.push("/mypage");
+      }
     },
 
     // 좋아요
