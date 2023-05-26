@@ -17,10 +17,7 @@
       <strong class="price">{{ Number(data.price).toLocaleString() }}원</strong>
     </div>
 
-    <button
-      class="button-chat button-h38 button-primary"
-      aria-label="채팅하기 버튼"
-    >
+    <button class="button-chat h38 button-primary" aria-label="채팅하기 버튼">
       채팅하기
     </button>
   </div>

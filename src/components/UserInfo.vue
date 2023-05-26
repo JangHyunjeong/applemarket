@@ -10,7 +10,7 @@
 
     <button
       type="buton"
-      class="button-primary button-h38"
+      class="button-primary h38"
       v-if="editButton"
       @click="$router.push('/myinfo')"
     >
