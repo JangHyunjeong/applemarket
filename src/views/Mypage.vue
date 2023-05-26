@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1 class="visually-hidden">마이페이지</h1>
-
     <UserInfo
       :userImage="userInfo.image"
       :userId="userInfo.id"
@@ -11,7 +9,7 @@
 
     <ul class="mypage-menu-list">
       <li>
-        <RouterLink to="/"><i class="xi-heart-o"></i>관심상품</RouterLink>
+        <RouterLink to="/mywish"><i class="xi-heart-o"></i>관심상품</RouterLink>
       </li>
       <li>
         <RouterLink to="/"> <i class="xi-paper-o"></i>내가쓴글</RouterLink>
@@ -26,6 +24,9 @@ import { RouterLink } from "vue-router";
 
 export default {
   name: "Mypage",
+  data() {
+    return {};
+  },
   components: {
     UserInfo,
     RouterLink,

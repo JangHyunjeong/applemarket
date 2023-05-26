@@ -41,7 +41,7 @@ export default {
         id: "토까가좋아",
         location: "노원구 공릉동",
         locationDong: "공릉동",
-        liked: [0],
+        liked: [1, 2],
         image: require("./assets/user01.jpg"),
       },
     };

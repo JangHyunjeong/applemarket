@@ -62,6 +62,24 @@
       "
     ></div>
 
+    <header v-else-if="$route.name" class="global-header">
+      <h1 class="visually-hidden">애플마켓</h1>
+      <ul class="left-menu">
+        <li>
+          <button
+            @click="$router.go(-1)"
+            arial-lable="뒤로가기"
+            class="button-back"
+          >
+            <i class="xi-angle-left"></i>
+          </button>
+        </li>
+        <li>
+          <h2 class="title">{{ $route.name }}</h2>
+        </li>
+      </ul>
+    </header>
+
     <header class="global-header" v-else>
       <h1 class="visually-hidden">애플마켓</h1>
       <ul class="left-menu">
