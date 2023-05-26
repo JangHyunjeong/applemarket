@@ -80,7 +80,7 @@
       </ul>
 
       <ul class="right-menu">
-        <li v-if="`${$route.params.id}== /myinfo`">
+        <li v-if="$route.path == `/myinfo`">
           <button
             @click="$emit('saveMyInfo')"
             class="button-submit"
