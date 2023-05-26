@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="layouts" v-if="userInfo">
+    <div class="layouts" v-if="userInfo != null">
       <GlobalHeader
         @copyUrl="copyUrl"
         @editPost="editPost"
@@ -31,7 +31,7 @@
       />
     </div>
 
-    <Join v-else />
+    <Join v-else @getUserName="getUserName($event)" @join="join" />
   </div>
 </template>
 
@@ -47,14 +47,8 @@ export default {
     return {
       productListData: [],
       HeaderMenuIsShow: false,
-      // userInfo: {
-      //   id: "test",
-      //   nickName: "토끼가좋아",
-      //   location: "노원구 공릉동",
-      //   locationDong: "공릉동",
-      //   liked: [1, 2],
-      //   image: require("./assets/user01.jpg"),
-      // },
+      userName: null,
+      userInfo: null,
     };
   },
   components: {
@@ -67,13 +61,34 @@ export default {
     this.productListData = JSON.parse(
       window.localStorage.getItem("productListData")
     );
+
+    this.userInfo = JSON.parse(window.localStorage.getItem("userInfo"));
   },
   updated() {
     this.productListData = JSON.parse(
       window.localStorage.getItem("productListData")
     );
+
+    this.userInfo = JSON.parse(window.localStorage.getItem("userInfo"));
   },
   methods: {
+    // 회원가입
+    getUserName(value) {
+      this.userName = value;
+      console.log(this.userName);
+    },
+    join() {
+      (this.userInfo = {
+        id: this.userName,
+        nickName: this.userName,
+        location: "노원구 공릉동",
+        locationDong: "공릉동",
+        liked: [1, 2],
+        image: require("./assets/user01.jpg"),
+      }),
+        window.localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
+    },
+
     // 좋아요
     toggleWish() {
       const id = Number(this.$route.params.id);
