@@ -6,6 +6,7 @@ import Mypage from "./views/Mypage.vue";
 import Chat from "./views/Chat.vue";
 import MyWish from "./views/MyWish.vue";
 import MyPost from "./views/MyPost.vue";
+import MyInfo from "./views/MyInfo.vue";
 
 const routes = [
   {
@@ -39,6 +40,11 @@ const routes = [
     path: "/mypost",
     component: MyPost,
     name: "내가쓴글",
+  },
+  {
+    path: "/myinfo",
+    component: MyInfo,
+    name: "정보수정",
   },
 ];
 

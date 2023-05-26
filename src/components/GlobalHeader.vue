@@ -78,6 +78,18 @@
           <h2 class="title">{{ $route.name }}</h2>
         </li>
       </ul>
+
+      <ul class="right-menu">
+        <li v-if="`${$route.params.id}== /myinfo`">
+          <button
+            @click="$emit('saveMyInfo')"
+            class="button-submit"
+            aria-label="정보수정 완료"
+          >
+            완료
+          </button>
+        </li>
+      </ul>
     </header>
 
     <header class="global-header" v-else>

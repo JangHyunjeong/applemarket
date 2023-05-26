@@ -8,7 +8,12 @@
       <div class="address">{{ userLocation }}</div>
     </div>
 
-    <button type="buton" class="button-primary button-h38" v-if="editButton">
+    <button
+      type="buton"
+      class="button-primary button-h38"
+      v-if="editButton"
+      @click="$router.push('/myinfo')"
+    >
       정보수정
     </button>
   </div>

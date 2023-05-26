@@ -5,6 +5,7 @@
       @editPost="editPost"
       @deletePost="deletePost"
       @toggleHeaderMenu="toggleHeaderMenu"
+      @saveMyInfo="saveMyInfo"
       :HeaderMenuIsShow="HeaderMenuIsShow"
       :userInfo="userInfo"
     />
@@ -22,6 +23,8 @@
       :userInfo="userInfo"
       @toggleWish="toggleWish"
       @toggleHeaderMenu="toggleHeaderMenu"
+      @getUserImage="getUserImage($event)"
+      @getUserNickName="getUserNickName($event)"
     />
   </div>
 </template>
@@ -126,6 +129,17 @@ export default {
 
       alert("URL이 복사되었습니다."); // 알림창
     },
+
+    // 마이페이지 - 정보수정
+    getUserImage(value) {
+      this.userInfo.image = value;
+      console.log(this.userInfo.image);
+    },
+    getUserNickName(value) {
+      this.userInfo.nickName = value;
+      console.log(this.userInfo.nickName);
+    },
+    saveMyInfo() {},
   },
 };
 </script>
