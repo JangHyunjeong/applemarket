@@ -1,10 +1,10 @@
 <template>
   <div class="user-info-group">
     <div class="avatar">
-      <img :src="userImage" :alt="userId" />
+      <img :src="userImage" :alt="userNickName" />
     </div>
     <div class="user-info">
-      <strong class="name">{{ userId }}</strong>
+      <strong class="name">{{ userNickName }}</strong>
       <div class="address">{{ userLocation }}</div>
     </div>
 
@@ -20,6 +20,7 @@ export default {
     //data: Object,
     userImage: String,
     userId: String,
+    userNickName: String,
     userLocation: String,
     editButton: {
       type: Boolean,

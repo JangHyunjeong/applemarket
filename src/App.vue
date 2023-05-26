@@ -38,7 +38,8 @@ export default {
       productListData: [],
       HeaderMenuIsShow: false,
       userInfo: {
-        id: "토까가좋아",
+        id: "test",
+        nickName: "토끼가좋아",
         location: "노원구 공릉동",
         locationDong: "공릉동",
         liked: [1, 2],

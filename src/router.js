@@ -5,6 +5,7 @@ import ProductWrite from "./views/ProductWrite.vue";
 import Mypage from "./views/Mypage.vue";
 import Chat from "./views/Chat.vue";
 import MyWish from "./views/MyWish.vue";
+import MyPost from "./views/MyPost.vue";
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
     path: "/mywish",
     component: MyWish,
     name: "관심상품",
+  },
+  {
+    path: "/mypost",
+    component: MyPost,
+    name: "내가쓴글",
   },
 ];
 

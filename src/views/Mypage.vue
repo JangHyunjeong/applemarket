@@ -3,6 +3,7 @@
     <UserInfo
       :userImage="userInfo.image"
       :userId="userInfo.id"
+      :userNickName="userInfo.nickName"
       :userLocation="userInfo.location"
       :editButton="true"
     />
@@ -12,7 +13,9 @@
         <RouterLink to="/mywish"><i class="xi-heart-o"></i>관심상품</RouterLink>
       </li>
       <li>
-        <RouterLink to="/"> <i class="xi-paper-o"></i>내가쓴글</RouterLink>
+        <RouterLink to="/mypost">
+          <i class="xi-paper-o"></i>내가쓴글</RouterLink
+        >
       </li>
     </ul>
   </div>

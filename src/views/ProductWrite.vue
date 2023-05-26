@@ -104,6 +104,7 @@ export default {
         productMainImage: this.imgUrlArray[0],
         productImages: this.imgUrlArray,
         userId: this.userInfo.id,
+        userNickName: this.userInfo.nickName,
         userLocation: this.userInfo.location,
         userImage: this.userInfo.image,
         chatCnt: 2,

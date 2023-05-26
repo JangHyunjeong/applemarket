@@ -11,9 +11,10 @@
     <UserInfo
       :userImage="`${data.userImage}`"
       :userId="`${data.userId}`"
+      :userNickName="`${data.userNickName}`"
       :userLocation="`${data.userLocation}`"
     />
-    <!-- :userImage="`${data.userImage}`" :userId="`${data.userId}`" -->
+    {{ userNickName }}
 
     <ProductInfo :data="data" />
 
