@@ -21,9 +21,14 @@ export default {
   },
   mounted() {
     const userInfoId = this.userInfo.id;
-    this.myPostData = this.productListData.filter((item) =>
-      userInfoId.includes(item.userId)
-    );
+
+    if (this.productListData != null) {
+      this.myPostData = this.productListData.filter((item) =>
+        userInfoId.includes(item.userId)
+      );
+    } else {
+      this.myPostData = null;
+    }
   },
 };
 </script>

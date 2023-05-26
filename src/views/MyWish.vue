@@ -16,15 +16,19 @@ export default {
     ProductList,
   },
   props: {
-    productListData: Array,
+    productListData: null,
     userInfo: Object,
   },
   mounted() {
     let wishIds = this.userInfo.liked;
 
-    this.wishListData = this.productListData.filter((item) =>
-      wishIds.includes(item.id)
-    );
+    if (this.productListData != null) {
+      this.wishListData = this.productListData.filter((item) =>
+        wishIds.includes(item.id)
+      );
+    } else {
+      this.wishListData = null;
+    }
   },
 };
 </script>
