@@ -25,6 +25,7 @@
 import WriteHeader from "../components/WriteHeader.vue";
 import AttachPhoto from "../components/AttachPhoto.vue";
 import InputGroup from "../components/InputGroup.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "ProductWrite",
@@ -48,7 +49,9 @@ export default {
   },
   props: {
     productListData: Array,
-    userInfo: Object,
+  },
+  computed: {
+    ...mapState(["userInfo"]),
   },
   methods: {
     getTitle(value) {

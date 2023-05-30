@@ -24,11 +24,7 @@
       @closeModal="closeModal"
     />
 
-    <ProductCta
-      :data="data"
-      :userInfo="userInfo"
-      @toggleWish="$emit('toggleWish')"
-    />
+    <ProductCta :data="data" @toggleWish="$emit('toggleWish')" />
   </div>
 </template>
 
@@ -57,7 +53,6 @@ export default {
   },
   props: {
     productListData: Array,
-    userInfo: Object,
   },
   methods: {
     openModal() {

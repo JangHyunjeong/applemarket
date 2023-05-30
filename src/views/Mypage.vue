@@ -28,8 +28,5 @@ export default {
     UserInfo,
     RouterLink,
   },
-  props: {
-    userInfo: Object,
-  },
 };
 </script>

@@ -23,7 +23,6 @@
 
       <RouterView
         :productListData="productListData"
-        :userInfo="userInfo"
         @toggleWish="toggleWish"
         @toggleHeaderMenu="toggleHeaderMenu"
         @getUserImage="getUserImage($event)"

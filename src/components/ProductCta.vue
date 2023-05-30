@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "ProductCta",
   data() {
@@ -31,7 +32,9 @@ export default {
   },
   props: {
     data: Object,
-    userInfo: Object,
+  },
+  computed: {
+    ...mapState(["userInfo"]),
   },
   methods: {},
 };
