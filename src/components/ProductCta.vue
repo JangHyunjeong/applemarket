@@ -4,7 +4,7 @@
       <button
         class="button-wish"
         aria-label="위시리스트에 추가"
-        @click="$emit('toggleWish')"
+        @click="toggleWish(Number($route.params.id))"
       >
         <i
           v-if="userInfo.liked.includes(Number($route.params.id)) == false"
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "ProductCta",
   data() {
@@ -36,6 +36,8 @@ export default {
   computed: {
     ...mapState(["userInfo"]),
   },
-  methods: {},
+  methods: {
+    ...mapMutations(["toggleWish"]),
+  },
 };
 </script>

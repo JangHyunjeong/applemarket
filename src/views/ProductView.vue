@@ -23,7 +23,7 @@
       @closeModal="closeModal"
     />
 
-    <ProductCta :data="data" @toggleWish="$emit('toggleWish')" />
+    <ProductCta :data="data" />
   </div>
 </template>
 

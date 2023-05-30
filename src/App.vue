@@ -22,7 +22,6 @@
       <FloatButton v-if="$route.path == '/'" />
 
       <RouterView
-        @toggleWish="toggleWish"
         @toggleHeaderMenu="toggleHeaderMenu"
         @getUserImage="getUserImage($event)"
         @getUserNickName="getUserNickName($event)"
@@ -70,25 +69,6 @@ export default {
     // );
   },
   methods: {
-    // 좋아요
-    toggleWish() {
-      const id = Number(this.$route.params.id);
-      let likedList = this.userInfo.liked;
-
-      const target = likedList.find((item) => {
-        if (item == id) {
-          return true;
-        }
-      });
-      const idIdx = likedList.indexOf(target);
-
-      if (likedList.includes(id)) {
-        likedList.splice(idIdx, 1);
-      } else {
-        likedList.push(id);
-      }
-    },
-
     // 상세 - 글 수정페이지로 이동
     editPost() {
       this.$router.push(`/write/${this.$route.params.id}`);

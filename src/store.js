@@ -62,6 +62,36 @@ const store = createStore({
         router.push("/mypage");
       }
     },
+
+    /* 상세  - 좋아요 */
+    toggleWish(state, id) {
+      let likedList = state.userInfo.liked;
+
+      // userInfo 좋아요 리스트에서 삭제
+      const targetInUserInfo = likedList.find((item) => {
+        if (item == id) {
+          return true;
+        }
+      });
+      const idxInUserInfo = likedList.indexOf(targetInUserInfo);
+
+      // productListData 좋아요 카운팅 조절
+      let targetInPrd = state.productListData.filter((item) => id == item.id);
+      const idxInPrd = state.productListData.indexOf(targetInPrd[0]);
+
+      if (likedList.includes(id)) {
+        state.userInfo.liked.splice(idxInUserInfo, 1);
+        state.productListData[idxInPrd].likeCnt--;
+      } else {
+        state.userInfo.liked.push(id);
+        state.productListData[idxInPrd].likeCnt++;
+      }
+
+      window.localStorage.setItem(
+        "productListData",
+        JSON.stringify(state.productListData)
+      );
+    },
   },
 });
 
