@@ -1,6 +1,12 @@
 <template>
   <div>
-    <UserInfo :editButton="true" />
+    <UserInfo
+      :userImage="userInfo.image"
+      :userId="userInfo.id"
+      :userNickName="userInfo.nickName"
+      :userLocation="userInfo.location"
+      :editButton="true"
+    />
 
     <ul class="mypage-menu-list">
       <li>
@@ -18,6 +24,7 @@
 <script>
 import UserInfo from "@/components/UserInfo.vue";
 import { RouterLink } from "vue-router";
+import { mapState } from "vuex";
 
 export default {
   name: "Mypage",
@@ -27,6 +34,9 @@ export default {
   components: {
     UserInfo,
     RouterLink,
+  },
+  computed: {
+    ...mapState(["userInfo"]),
   },
 };
 </script>
