@@ -6,9 +6,9 @@
         @editPost="editPost"
         @deletePost="deletePost"
         @toggleHeaderMenu="toggleHeaderMenu"
-        @saveMyInfo="saveMyInfo"
         :HeaderMenuIsShow="HeaderMenuIsShow"
         :userInfo="userInfo"
+        :isMyPost="isMyPost"
       />
 
       <GlobalTabBar
@@ -28,19 +28,16 @@
         @toggleHeaderMenu="toggleHeaderMenu"
         @getUserImage="getUserImage($event)"
         @getUserNickName="getUserNickName($event)"
+        @isMyPost="isMyPost"
       />
     </div>
 
-    <Join
-      v-else
-      @getUserName="getUserName($event)"
-      @getUserId="getUserId($event)"
-      @join="join"
-    />
+    <Join v-else />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 import GlobalHeader from "./components/GlobalHeader.vue";
 import GlobalTabBar from "./components/GlobalTabBar.vue";
 import FloatButton from "./components/FloatButton.vue";
@@ -52,9 +49,8 @@ export default {
     return {
       productListData: [],
       HeaderMenuIsShow: false,
-      userName: "",
-      userId: "",
-      userInfo: null,
+      isMyPost: false,
+      myPostData: null,
     };
   },
   components: {
@@ -63,12 +59,13 @@ export default {
     FloatButton,
     Join,
   },
+  computed: {
+    ...mapState(["userInfo"]),
+  },
   mounted() {
     this.productListData = JSON.parse(
       window.localStorage.getItem("productListData")
     );
-
-    this.userInfo = JSON.parse(window.localStorage.getItem("userInfo"));
   },
   updated() {
     this.productListData = JSON.parse(
@@ -76,55 +73,6 @@ export default {
     );
   },
   methods: {
-    // 회원가입
-    getUserId(value) {
-      this.userId = value;
-    },
-    getUserName(value) {
-      this.userName = value;
-    },
-    join() {
-      if (this.userId == "") {
-        alert("아이디를 입력해주세요.");
-      } else if (this.userName == "") {
-        alert("닉네임을 입력해주세요.");
-      } else {
-        (this.userInfo = {
-          id: this.userId,
-          nickName: this.userName,
-          location: "노원구 공릉동",
-          locationDong: "공릉동",
-          liked: [],
-          image: null,
-        }),
-          window.localStorage.setItem(
-            "userInfo",
-            JSON.stringify(this.userInfo)
-          );
-      }
-    },
-
-    // 마이페이지 - 정보수정
-    getUserImage(target) {
-      if (target != undefined) {
-        const file = target.files[0];
-        const url = URL.createObjectURL(file);
-        this.userInfo.image = url;
-      }
-    },
-    getUserNickName(value) {
-      this.userInfo.nickName = value;
-    },
-    saveMyInfo() {
-      if (this.userInfo.nickName == "") {
-        alert("닉네임을 입력해주세요");
-      } else {
-        window.localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
-        alert("정보수정이 완료되었습니다.");
-        this.$router.push("/mypage");
-      }
-    },
-
     // 좋아요
     toggleWish() {
       const id = Number(this.$route.params.id);
@@ -176,7 +124,7 @@ export default {
       }
     },
 
-    // 상세  -공유하기
+    // 상세  - 공유하기
     copyUrl() {
       const urlArea = document.createElement("textarea");
 
@@ -188,7 +136,36 @@ export default {
 
       alert("URL이 복사되었습니다."); // 알림창
     },
+
+    // checkMyPost() {
+    //   let viewData = {};
+    //   let productData = this.productListData;
+    //   productData.find((item, idx) => {
+    //     if (item.id === Number(this.$route.params.id)) {
+    //       viewData = productData[idx];
+    //     }
+    //   });
+
+    //   // 내 글인지 아닌지 판별
+    //   console.log(viewData.userId == this.userInfo.id);
+    //   if (viewData.userId == this.userInfo.id) {
+    //     this.isMyPost == true;
+    //   }
+    // },
   },
+  // watch: {
+  //   $route(to, from) {
+  //     if (to.path !== from.path) {
+  //       const path = to.path.split("/", 2)[1];
+  //       if (path == "view") {
+  //         this.checkMyPost();
+  //         console.log("느려");
+  //       } else {
+  //         this.isMyPost == false;
+  //       }
+  //     }
+  //   },
+  // },
 };
 </script>
 

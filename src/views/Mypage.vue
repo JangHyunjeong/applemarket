@@ -1,12 +1,6 @@
 <template>
   <div>
-    <UserInfo
-      :userImage="userInfo.image"
-      :userId="userInfo.id"
-      :userNickName="userInfo.nickName"
-      :userLocation="userInfo.location"
-      :editButton="true"
-    />
+    <UserInfo :editButton="true" />
 
     <ul class="mypage-menu-list">
       <li>

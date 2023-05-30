@@ -2,15 +2,15 @@
   <div class="user-info-group">
     <div class="avatar">
       <img
-        v-if="userImage == null"
+        v-if="userInfo.image == null"
         src="../assets/img-user-default.png"
         alt=""
       />
-      <img v-else :src="userImage" :alt="userNickName" />
+      <img v-else :src="userInfo.image" :alt="userInfo.nickName" />
     </div>
     <div class="user-info">
-      <strong class="name">{{ userNickName }}</strong>
-      <div class="address">{{ userLocation }}</div>
+      <strong class="name">{{ userInfo.nickName }}</strong>
+      <div class="address">{{ userInfo.location }}</div>
     </div>
 
     <button
@@ -24,18 +24,17 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
   name: "UserInfo",
   props: {
-    //data: Object,
-    userImage: String,
-    userId: String,
-    userNickName: String,
-    userLocation: String,
     editButton: {
       type: Boolean,
       default: false,
     },
+  },
+  computed: {
+    ...mapState(["userInfo"]),
   },
 };
 </script>

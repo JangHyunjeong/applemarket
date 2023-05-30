@@ -8,13 +8,14 @@
           src="../assets/img-user-default.png"
           alt=""
         />
+
         <img v-else :src="`${userInfo.image}`" alt="" />
       </label>
       <input
         type="file"
         id="editable-avatar"
         class="visually-hidden"
-        @change="$emit('getUserImage', $event.target)"
+        @change="getUserImage($event.target)"
       />
     </div>
 
@@ -25,17 +26,21 @@
         id="nickName"
         type="text"
         :value="userInfo.nickName"
-        @input="$emit('getUserNickName', $event.target.value)"
+        @input="getUserNickName($event.target.value)"
       />
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from "vuex";
 export default {
   Name: "MyInfo",
-  props: {
-    userInfo: Object,
+  computed: {
+    ...mapState(["userInfo"]),
+  },
+  methods: {
+    ...mapMutations(["getUserImage", "getUserNickName"]),
   },
 };
 </script>

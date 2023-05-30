@@ -82,7 +82,7 @@
       <ul class="right-menu">
         <li v-if="$route.path == `/myinfo`">
           <button
-            @click="$emit('saveMyInfo')"
+            @click="saveMyInfo"
             class="button-submit"
             aria-label="정보수정 완료"
           >
@@ -125,14 +125,20 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from "vuex";
 export default {
   name: "GlobalHeader",
   props: {
     HeaderMenuIsShow: Boolean,
-    userInfo: Object,
   },
   data() {
     return {};
+  },
+  computed: {
+    ...mapState(["userInfo"]),
+  },
+  methods: {
+    ...mapMutations(["saveMyInfo"]),
   },
 };
 </script>
