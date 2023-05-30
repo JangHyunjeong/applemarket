@@ -47,11 +47,8 @@ export default {
     AttachPhoto,
     InputGroup,
   },
-  props: {
-    productListData: Array,
-  },
   computed: {
-    ...mapState(["userInfo"]),
+    ...mapState(["userInfo", "productListData"]),
   },
   methods: {
     getTitle(value) {
@@ -120,7 +117,7 @@ export default {
     // 작성된 데이터 저장 (완료버튼 클릭시)
     saveData() {
       let dataArr = [];
-      let oldArr = JSON.parse(window.localStorage.getItem("productListData"));
+      let oldArr = this.productListData;
 
       // localStorage상에 productListData 유무 체크
       if (oldArr === null) {
@@ -173,7 +170,7 @@ export default {
     // 수정하기
     saveCustomData() {
       let dataArr = [];
-      let oldArr = JSON.parse(window.localStorage.getItem("productListData"));
+      let oldArr = this.productListData;
 
       // localStorage상에 productListData 유무 체크
       if (oldArr === null) {

@@ -4,6 +4,7 @@
 
 <script>
 import ProductList from "../components/ProductList";
+import { mapState } from "vuex";
 
 export default {
   name: "MyWish",
@@ -15,20 +16,22 @@ export default {
   components: {
     ProductList,
   },
-  props: {
-    productListData: null,
-    userInfo: Object,
+  computed: {
+    ...mapState(["userInfo", "productListData"]),
   },
   mounted() {
     let wishIds = this.userInfo.liked;
+    console.log(wishIds.length);
 
-    if (this.productListData != null) {
+    if (wishIds.length !== 0 && this.productListData !== null) {
       this.wishListData = this.productListData.filter((item) =>
         wishIds.includes(item.id)
       );
     } else {
       this.wishListData = null;
     }
+
+    console.log(this.wishListData);
   },
 };
 </script>

@@ -22,7 +22,6 @@
       <FloatButton v-if="$route.path == '/'" />
 
       <RouterView
-        :productListData="productListData"
         @toggleWish="toggleWish"
         @toggleHeaderMenu="toggleHeaderMenu"
         @getUserImage="getUserImage($event)"
@@ -46,7 +45,6 @@ export default {
   name: "App",
   data() {
     return {
-      productListData: [],
       HeaderMenuIsShow: false,
       isMyPost: false,
       myPostData: null,
@@ -59,17 +57,17 @@ export default {
     Join,
   },
   computed: {
-    ...mapState(["userInfo"]),
+    ...mapState(["userInfo", "productListData"]),
   },
   mounted() {
-    this.productListData = JSON.parse(
-      window.localStorage.getItem("productListData")
-    );
+    // this.productListData = JSON.parse(
+    //   window.localStorage.getItem("productListData")
+    // );
   },
   updated() {
-    this.productListData = JSON.parse(
-      window.localStorage.getItem("productListData")
-    );
+    // this.productListData = JSON.parse(
+    //   window.localStorage.getItem("productListData")
+    // );
   },
   methods: {
     // 좋아요

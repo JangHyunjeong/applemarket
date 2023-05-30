@@ -34,6 +34,7 @@
 <script>
 export default {
   name: "ProductList",
+
   props: {
     productListData: Array,
   },

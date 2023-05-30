@@ -14,7 +14,6 @@
       :userNickName="`${data.userNickName}`"
       :userLocation="`${data.userLocation}`"
     />
-    {{ userNickName }}
 
     <ProductInfo :data="data" />
 
@@ -35,6 +34,7 @@ import ProductInfo from "@/components/ProductInfo.vue";
 import ProductCta from "@/components/ProductCta.vue";
 import ProductCarousel from "@/components/ProductCarousel.vue";
 import ProductImgModal from "@/components/ProductImgModal.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "ProductView",
@@ -51,8 +51,8 @@ export default {
     ProductCarousel,
     ProductImgModal,
   },
-  props: {
-    productListData: Array,
+  computed: {
+    ...mapState(["productListData"]),
   },
   methods: {
     openModal() {

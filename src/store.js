@@ -4,6 +4,9 @@ import router from "./router";
 const store = createStore({
   state() {
     return {
+      productListData: JSON.parse(
+        window.localStorage.getItem("productListData")
+      ),
       userName: "",
       userId: "",
       userInfo: JSON.parse(window.localStorage.getItem("userInfo")),
