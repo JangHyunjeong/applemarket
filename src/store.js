@@ -4,6 +4,9 @@ import router from "./router";
 const store = createStore({
   state() {
     return {
+      productListDataOriginal: JSON.parse(
+        window.localStorage.getItem("productListData")
+      ),
       productListData: JSON.parse(
         window.localStorage.getItem("productListData")
       ),
@@ -11,6 +14,10 @@ const store = createStore({
       userId: "",
       userInfo: JSON.parse(window.localStorage.getItem("userInfo")),
       HeaderMenuIsShow: false,
+      searchMode: false,
+      searchResultMode: false,
+      searchKeyword: "",
+      recentKeyword: JSON.parse(window.localStorage.getItem("recentKeyword")),
     };
   },
   mutations: {
@@ -155,6 +162,41 @@ const store = createStore({
       document.body.removeChild(urlArea);
 
       alert("URL이 복사되었습니다."); // 알림창
+    },
+
+    /* 검색기능 */
+    searchItem(state, value) {
+      if (value !== "") {
+        // 검색결과 필터링
+        state.searchResultMode = true;
+        state.productListData = state.productListDataOriginal.filter(
+          (item) => item.title.includes(value) || item.content.includes(value)
+        );
+        // 최근검색어에 등록
+        state.recentKeyword.unshift(value);
+        window.localStorage.setItem(
+          "recentKeyword",
+          JSON.stringify(state.recentKeyword)
+        );
+      } else {
+        alert("검색어를 입력해주세요.");
+      }
+    },
+    // 수정중 감지
+    searchEditing(state, value) {
+      state.searchKeyword = value;
+      state.searchResultMode = false;
+    },
+    //button delete 클릭시 인풋 클리어
+    clearInput(state) {
+      state.searchKeyword = "";
+    },
+    deleteRecentKeyowrd(state, idx) {
+      state.recentKeyword.splice(idx, 1);
+      window.localStorage.setItem(
+        "recentKeyword",
+        JSON.stringify(state.recentKeyword)
+      );
     },
   },
 });

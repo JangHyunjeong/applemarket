@@ -1,7 +1,10 @@
 <template>
   <div>
     <ul class="product-list">
-      <li class="product-empty" v-if="productListData === null">
+      <li
+        class="product-empty"
+        v-if="productListData === null || productListData.length === 0"
+      >
         등록된 상품이 없습니다.
       </li>
 

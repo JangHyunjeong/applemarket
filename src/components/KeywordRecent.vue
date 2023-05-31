@@ -7,39 +7,21 @@
       </button>
     </header>
 
-    <ul class="keyword-list">
-      <li>
-        <button type="button" class="keyword">아레나</button>
-        <button type="button" class="button-delete">
+    <ul v-if="$store.state.recentKeyword.length !== 0" class="keyword-list">
+      <li v-for="(item, idx) in $store.state.recentKeyword" :key="idx">
+        <button type="button" class="keyword">{{ item }}</button>
+        <button
+          type="button"
+          class="button-delete"
+          @click="$store.commit('deleteRecentKeyowrd', Number(idx))"
+        >
           <i class="xi-close"></i>
         </button>
       </li>
-      <li>
-        <button type="button" class="keyword">마르디</button>
-        <button type="button" class="button-delete">
-          <i class="xi-close"></i>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="keyword">스타벅스</button>
-        <button type="button" class="button-delete">
-          <i class="xi-close"></i>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="keyword">
-          아메리카노 키워드가 아주아주 길때를 대비하자고
-        </button>
-        <button type="button" class="button-delete">
-          <i class="xi-close"></i>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="keyword">가방</button>
-        <button type="button" class="button-delete">
-          <i class="xi-close"></i>
-        </button>
-      </li>
+    </ul>
+
+    <ul v-else class="keyword-list">
+      <li class="empty">최근 검색어가 없습니다</li>
     </ul>
   </div>
 </template>
