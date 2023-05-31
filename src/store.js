@@ -131,7 +131,7 @@ const store = createStore({
           state.userInfo.liked.splice(cutIdx, 1);
         }
       }
-      router.push("/");
+      router.go(-1);
       state.HeaderMenuIsShow = false;
     },
 
