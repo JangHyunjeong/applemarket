@@ -149,6 +149,7 @@ select,
 textarea {
   outline: none;
   font: inherit;
+  letter-spacing: inherit;
 }
 textarea {
   resize: none;
@@ -170,6 +171,7 @@ html {
 body {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
+  letter-spacing: -0.02em;
   color: $primary;
 }
 /* select 화살표 */

@@ -55,7 +55,9 @@
 
     <div
       v-else-if="
-        $route.path == `/write` || $route.path == `/write/${$route.params.id}`
+        $route.path == `/write` ||
+        $route.path == `/write/${$route.params.id}` ||
+        $route.path == `/search`
       "
     ></div>
 
@@ -103,10 +105,14 @@
       <ul class="right-menu">
         <li>
           <button aria-label="검색">
-            <i class="xi-search" aria-hidden="true"></i>
+            <i
+              class="xi-search"
+              aria-hidden="true"
+              @click="$router.push('/search')"
+            ></i>
           </button>
         </li>
-        <li>
+        <!-- <li>
           <button aria-label="메뉴">
             <i class="xi-bars" aria-hidden="true"></i>
           </button>
@@ -115,7 +121,7 @@
           <button aria-label="알람">
             <i class="xi-bell-o" aria-hidden="true"></i>
           </button>
-        </li>
+        </li> -->
       </ul>
     </header>
   </div>

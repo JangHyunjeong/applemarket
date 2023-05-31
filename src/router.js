@@ -7,6 +7,7 @@ import Chat from "./views/Chat.vue";
 import MyWish from "./views/MyWish.vue";
 import MyPost from "./views/MyPost.vue";
 import MyInfo from "./views/MyInfo.vue";
+import SearchView from "./views/SearchView.vue";
 
 const routes = [
   {
@@ -45,6 +46,10 @@ const routes = [
     path: "/myinfo",
     component: MyInfo,
     name: "정보수정",
+  },
+  {
+    path: "/search",
+    component: SearchView,
   },
 ];
 
