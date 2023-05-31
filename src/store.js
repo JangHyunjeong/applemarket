@@ -4,10 +4,10 @@ import router from "./router";
 const store = createStore({
   state() {
     return {
-      productListDataOriginal: JSON.parse(
+      productListData: JSON.parse(
         window.localStorage.getItem("productListData")
       ),
-      productListData: JSON.parse(
+      searchProductListData: JSON.parse(
         window.localStorage.getItem("productListData")
       ),
       userName: "",
@@ -169,10 +169,16 @@ const store = createStore({
       if (value !== "") {
         // 검색결과 필터링
         state.searchResultMode = true;
-        state.productListData = state.productListDataOriginal.filter(
+        state.searchProductListData = state.productListData.filter(
           (item) => item.title.includes(value) || item.content.includes(value)
         );
+        if (state.searchProductListData.length == 0) {
+          state.searchProductListData = null;
+        }
         // 최근검색어에 등록
+        if (state.recentKeyword == null) {
+          state.recentKeyword = [];
+        }
         state.recentKeyword.unshift(value);
         window.localStorage.setItem(
           "recentKeyword",
@@ -193,7 +199,11 @@ const store = createStore({
     },
     // 최근검색어 키워드 지우기
     deleteRecentKeyowrd(state, idx) {
-      state.recentKeyword.splice(idx, 1);
+      if (state.recentKeyword.length == 1) {
+        state.recentKeyword = null;
+      } else {
+        state.recentKeyword.splice(idx, 1);
+      }
       window.localStorage.setItem(
         "recentKeyword",
         JSON.stringify(state.recentKeyword)
@@ -201,7 +211,7 @@ const store = createStore({
     },
     // 최근검색어 키워드 all
     deleteRecentKeyowrdAll(state) {
-      state.recentKeyword = [];
+      state.recentKeyword = null;
       window.localStorage.setItem(
         "recentKeyword",
         JSON.stringify(state.recentKeyword)

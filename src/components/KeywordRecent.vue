@@ -11,7 +11,7 @@
       </button>
     </header>
 
-    <ul v-if="$store.state.recentKeyword.length !== 0" class="keyword-list">
+    <ul v-if="$store.state.recentKeyword !== null" class="keyword-list">
       <li v-for="(item, idx) in $store.state.recentKeyword" :key="idx">
         <button type="button" class="keyword">{{ item }}</button>
         <button

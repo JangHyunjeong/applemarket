@@ -1,6 +1,6 @@
 <template>
   <div class="search-result">
-    <ProductList :productListData="$store.state.productListData" />
+    <ProductList :productListData="$store.state.searchProductListData" />
   </div>
 </template>
 

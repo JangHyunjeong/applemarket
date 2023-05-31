@@ -1,5 +1,5 @@
 <template>
-  <ProductList :productListData="productListDataOriginal" />
+  <ProductList :productListData="productListData" />
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
     ProductList,
   },
   computed: {
-    ...mapState(["productListDataOriginal"]),
+    ...mapState(["productListData"]),
   },
 };
 </script>
