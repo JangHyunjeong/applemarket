@@ -10,9 +10,17 @@ const store = createStore({
       userName: "",
       userId: "",
       userInfo: JSON.parse(window.localStorage.getItem("userInfo")),
+      HeaderMenuIsShow: false,
     };
   },
   mutations: {
+    /* 상품리스트 업데이트 */
+    updateProductList(state) {
+      state.productListData = JSON.parse(
+        window.localStorage.getItem("productListData")
+      );
+    },
+
     /* 회원가입 */
     getUserId(state, value) {
       state.userId = value;
@@ -91,6 +99,52 @@ const store = createStore({
         "productListData",
         JSON.stringify(state.productListData)
       );
+    },
+
+    /* 상세 - 글 수정페이지로 이동 */
+    editPost(state, id) {
+      router.push(`/write/${id}`);
+    },
+
+    /* 상세 - 글 삭제 */
+    deletePost(state, id) {
+      if (state.productListData.length == 1) {
+        state.productListData = null;
+        window.localStorage.removeItem("productListData");
+      } else {
+        const newDataList = state.productListData.filter(
+          (item) => item.id != id
+        );
+        state.productListData = newDataList;
+        window.localStorage.setItem(
+          "productListData",
+          JSON.stringify(state.productListData)
+        );
+      }
+      router.push("/");
+      state.HeaderMenuIsShow = false;
+    },
+
+    /* 상세 - 메뉴 더보기 */
+    toggleHeaderMenu(state) {
+      if (state.HeaderMenuIsShow == false) {
+        state.HeaderMenuIsShow = true;
+      } else {
+        state.HeaderMenuIsShow = false;
+      }
+    },
+
+    /* 상세  - 공유하기 */
+    copyUrl() {
+      const urlArea = document.createElement("textarea");
+
+      document.body.appendChild(urlArea);
+      urlArea.value = window.document.location.href;
+      urlArea.select(); //urlArea를 설정
+      document.execCommand("copy"); // 복사
+      document.body.removeChild(urlArea);
+
+      alert("URL이 복사되었습니다."); // 알림창
     },
   },
 });

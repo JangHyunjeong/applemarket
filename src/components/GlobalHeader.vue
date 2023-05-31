@@ -28,7 +28,7 @@
 
       <ul class="right-menu">
         <li>
-          <button type="button" aria-label="공유하기" @click="$emit('copyUrl')">
+          <button type="button" aria-label="공유하기" @click="copyUrl">
             <i class="xi-share-alt-o" aria-hidden="true"></i>
           </button>
         </li>
@@ -37,18 +37,15 @@
             <i
               class="xi-ellipsis-v"
               aria-hidden="true"
-              @click="$emit('toggleHeaderMenu')"
+              @click="toggleHeaderMenu"
             ></i>
           </button>
 
           <div class="detail-menu" v-if="HeaderMenuIsShow">
-            <button type="button" @click="$emit('editPost', $route.params.id)">
+            <button type="button" @click="editPost(Number($route.params.id))">
               수정하기
             </button>
-            <button
-              type="button"
-              @click="$emit('deletePost', $route.params.id)"
-            >
+            <button type="button" @click="deletePost(Number($route.params.id))">
               삭제하기
             </button>
           </div>
@@ -128,17 +125,20 @@
 import { mapMutations, mapState } from "vuex";
 export default {
   name: "GlobalHeader",
-  props: {
-    HeaderMenuIsShow: Boolean,
-  },
   data() {
     return {};
   },
   computed: {
-    ...mapState(["userInfo"]),
+    ...mapState(["userInfo", "HeaderMenuIsShow"]),
   },
   methods: {
-    ...mapMutations(["saveMyInfo"]),
+    ...mapMutations([
+      "saveMyInfo",
+      "editPost",
+      "deletePost",
+      "toggleHeaderMenu",
+      "copyUrl",
+    ]),
   },
 };
 </script>

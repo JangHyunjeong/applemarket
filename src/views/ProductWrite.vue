@@ -25,7 +25,7 @@
 import WriteHeader from "../components/WriteHeader.vue";
 import AttachPhoto from "../components/AttachPhoto.vue";
 import InputGroup from "../components/InputGroup.vue";
-import { mapState } from "vuex";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   name: "ProductWrite",
@@ -51,6 +51,8 @@ export default {
     ...mapState(["userInfo", "productListData"]),
   },
   methods: {
+    ...mapMutations(["toggleHeaderMenu", "updateProductList"]),
+
     getTitle(value) {
       this.title = value;
     },
@@ -107,9 +109,9 @@ export default {
         userNickName: this.userInfo.nickName,
         userLocation: this.userInfo.location,
         userImage: this.userInfo.image,
-        chatCnt: 2,
-        likeCnt: 1,
-        viewCnt: 100,
+        chatCnt: 0,
+        likeCnt: 0,
+        viewCnt: 0,
         datetime: datetime.toLocaleTimeString(),
       };
     },
@@ -122,6 +124,7 @@ export default {
       // localStorage상에 productListData 유무 체크
       if (oldArr === null) {
         oldArr = [];
+        console.log("oldArr1", oldArr);
       } else {
         dataArr = oldArr;
       }
@@ -143,15 +146,14 @@ export default {
         dataArr.unshift(this.definedData);
         // localStorage에 저장
         window.localStorage.setItem("productListData", JSON.stringify(dataArr));
+        this.updateProductList();
         this.$router.push("/");
       }
     },
 
     // 수정하기 데이터 불러오기
     getCustomData() {
-      let customList = JSON.parse(
-        window.localStorage.getItem("productListData")
-      );
+      let customList = this.productListData;
 
       const target = customList.find((item) => {
         if (item.id == this.id) {
@@ -159,6 +161,7 @@ export default {
         }
       });
       this.customIdx = customList.indexOf(target);
+      console.log("this.customIdx", this.customIdx);
 
       this.title = customList[this.customIdx].title;
       this.price = customList[this.customIdx].price;
@@ -198,7 +201,7 @@ export default {
 
         // url변경 및 수정하기 팝업 제거
         this.$router.push(`/view/${this.id}`);
-        this.$emit("toggleHeaderMenu");
+        this.toggleHeaderMenu();
       }
     },
   },
