@@ -21,7 +21,6 @@ export default {
   },
   mounted() {
     let wishIds = this.userInfo.liked;
-    console.log(wishIds.length);
 
     if (wishIds.length !== 0 && this.productListData !== null) {
       this.wishListData = this.productListData.filter((item) =>
@@ -30,8 +29,6 @@ export default {
     } else {
       this.wishListData = null;
     }
-
-    console.log(this.wishListData);
   },
 };
 </script>

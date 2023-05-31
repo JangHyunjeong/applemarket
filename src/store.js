@@ -76,10 +76,8 @@ const store = createStore({
       let likedList = state.userInfo.liked;
 
       // userInfo 좋아요 리스트에서 삭제
-      const targetInUserInfo = likedList.find((item) => {
-        if (item == id) {
-          return true;
-        }
+      const targetInUserInfo = likedList.filter((item) => {
+        item == id;
       });
       const idxInUserInfo = likedList.indexOf(targetInUserInfo);
 
@@ -90,11 +88,13 @@ const store = createStore({
       if (likedList.includes(id)) {
         state.userInfo.liked.splice(idxInUserInfo, 1);
         state.productListData[idxInPrd].likeCnt--;
+        console.log("slice", id);
       } else {
         state.userInfo.liked.push(id);
         state.productListData[idxInPrd].likeCnt++;
+        console.log("push", id);
       }
-
+      window.localStorage.setItem("userInfo", JSON.stringify(state.userInfo));
       window.localStorage.setItem(
         "productListData",
         JSON.stringify(state.productListData)
@@ -108,6 +108,8 @@ const store = createStore({
 
     /* 상세 - 글 삭제 */
     deletePost(state, id) {
+      let wishIds = state.userInfo.liked;
+
       if (state.productListData.length == 1) {
         state.productListData = null;
         window.localStorage.removeItem("productListData");
@@ -120,6 +122,14 @@ const store = createStore({
           "productListData",
           JSON.stringify(state.productListData)
         );
+
+        // 글 삭제시, 위시리스트에 있던 데이터도 삭제
+        const wishconfirm = wishIds.filter((item) => item == id);
+
+        if (wishconfirm.length !== 0) {
+          const cutIdx = wishIds.indexOf(wishconfirm);
+          state.userInfo.liked.splice(cutIdx, 1);
+        }
       }
       router.push("/");
       state.HeaderMenuIsShow = false;
