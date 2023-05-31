@@ -95,11 +95,9 @@ const store = createStore({
       if (likedList.includes(id)) {
         state.userInfo.liked.splice(idxInUserInfo, 1);
         state.productListData[idxInPrd].likeCnt--;
-        console.log("slice", id);
       } else {
         state.userInfo.liked.push(id);
         state.productListData[idxInPrd].likeCnt++;
-        console.log("push", id);
       }
       window.localStorage.setItem("userInfo", JSON.stringify(state.userInfo));
       window.localStorage.setItem(
@@ -131,11 +129,15 @@ const store = createStore({
         );
 
         // 글 삭제시, 위시리스트에 있던 데이터도 삭제
-        const wishconfirm = wishIds.filter((item) => item == id);
+        const newWish = wishIds.filter((item) => item !== id);
 
-        if (wishconfirm.length !== 0) {
-          const cutIdx = wishIds.indexOf(wishconfirm);
-          state.userInfo.liked.splice(cutIdx, 1);
+        if (newWish !== wishIds) {
+          state.userInfo.liked = newWish;
+          // userInfo 좋아요 리스트에서 삭제
+          window.localStorage.setItem(
+            "userInfo",
+            JSON.stringify(state.userInfo)
+          );
         }
       }
       router.go(-1);
