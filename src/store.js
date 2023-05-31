@@ -191,8 +191,17 @@ const store = createStore({
     clearInput(state) {
       state.searchKeyword = "";
     },
+    // 최근검색어 키워드 지우기
     deleteRecentKeyowrd(state, idx) {
       state.recentKeyword.splice(idx, 1);
+      window.localStorage.setItem(
+        "recentKeyword",
+        JSON.stringify(state.recentKeyword)
+      );
+    },
+    // 최근검색어 키워드 all
+    deleteRecentKeyowrdAll(state) {
+      state.recentKeyword = [];
       window.localStorage.setItem(
         "recentKeyword",
         JSON.stringify(state.recentKeyword)

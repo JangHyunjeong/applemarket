@@ -2,7 +2,11 @@
   <div class="keyword-recent">
     <header>
       <h3>최근검색어</h3>
-      <button type="button" aria-label="최근 검색어 모두 지우기">
+      <button
+        type="button"
+        aria-label="최근 검색어 모두 지우기"
+        @click="$store.commit('deleteRecentKeyowrdAll')"
+      >
         모두 지우기
       </button>
     </header>
