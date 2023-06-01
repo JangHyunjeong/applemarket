@@ -171,12 +171,18 @@ const store = createStore({
       if (value !== "") {
         // 검색결과 필터링
         state.searchResultMode = true;
-        state.searchProductListData = state.productListData.filter(
-          (item) => item.title.includes(value) || item.content.includes(value)
-        );
-        if (state.searchProductListData.length == 0) {
+
+        if (state.productListData !== null) {
+          state.searchProductListData = state.productListData.filter(
+            (item) => item.title.includes(value) || item.content.includes(value)
+          );
+          if (state.searchProductListData.length == 0) {
+            state.searchProductListData = null;
+          }
+        } else {
           state.searchProductListData = null;
         }
+
         // 최근검색어에 등록
         if (state.recentKeyword == null) {
           state.recentKeyword = [];
