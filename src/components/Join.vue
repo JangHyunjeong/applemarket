@@ -9,6 +9,7 @@
       class="input-basic h50"
       placeholder="사용하실 아이디를 입력해주세요"
       @input="getUserId($event.target.value)"
+      maxlength="12"
     />
 
     <label for="nickName" class="label-title">닉네임</label>
@@ -18,6 +19,7 @@
       class="input-basic h50"
       @input="getUserName($event.target.value)"
       placeholder="사용하실 닉네임을 입력해주세요"
+      maxlength="8"
     />
 
     <button type="button" class="button-primary h50" @click="join">완료</button>

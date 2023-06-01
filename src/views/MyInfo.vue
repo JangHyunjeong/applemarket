@@ -27,6 +27,7 @@
         type="text"
         :value="userInfo.nickName"
         @input="getUserNickName($event.target.value)"
+        maxlength="8"
       />
     </div>
   </div>
