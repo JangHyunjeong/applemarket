@@ -14,7 +14,7 @@
     </div>
 
     <button
-      type="buton"
+      type="button"
       class="button-primary h38"
       v-if="editButton"
       @click="$router.push('/myinfo')"
