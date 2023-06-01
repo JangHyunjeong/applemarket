@@ -1,1 +1,15 @@
-<template><div>채팅</div></template>
+<template>
+  <div>
+    <chatList />
+  </div>
+</template>
+
+<script>
+import ChatList from "../components/ChatList.vue";
+
+export default {
+  components: {
+    ChatList,
+  },
+};
+</script>
