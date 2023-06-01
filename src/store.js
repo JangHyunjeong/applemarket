@@ -170,6 +170,7 @@ const store = createStore({
     searchItem(state, value) {
       if (value !== "") {
         // 검색결과 필터링
+        state.searchKeyword = value;
         state.searchResultMode = true;
 
         if (state.productListData !== null) {
@@ -204,6 +205,7 @@ const store = createStore({
     //button delete 클릭시 인풋 클리어
     clearInput(state) {
       state.searchKeyword = "";
+      state.searchResultMode = false;
     },
     // 최근검색어 키워드 지우기
     deleteRecentKeyowrd(state, idx) {

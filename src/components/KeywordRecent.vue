@@ -13,7 +13,14 @@
 
     <ul v-if="$store.state.recentKeyword !== null" class="keyword-list">
       <li v-for="(item, idx) in $store.state.recentKeyword" :key="idx">
-        <button type="button" class="keyword">{{ item }}</button>
+        <button
+          @click="$store.commit('searchItem', $event.target.value)"
+          type="button"
+          class="keyword"
+          :value="item"
+        >
+          {{ item }}
+        </button>
         <button
           type="button"
           class="button-delete"
