@@ -73,7 +73,10 @@
             <i class="xi-angle-left"></i>
           </button>
         </li>
-        <li>
+        <li v-if="$route.path == `/chatView`">
+          <h2 class="title">상큼아삭사과</h2>
+        </li>
+        <li v-else>
           <h2 class="title">{{ $route.name }}</h2>
         </li>
       </ul>

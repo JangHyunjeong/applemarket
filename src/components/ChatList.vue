@@ -1,7 +1,7 @@
 <template>
   <ul class="chat-list">
     <li class="chat-item">
-      <router-link to="/">
+      <router-link to="/chatView">
         <div class="avatar">
           <img src="../assets/img-user-default.png" alt="" />
         </div>

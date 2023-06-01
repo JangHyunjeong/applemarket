@@ -4,6 +4,7 @@ import ProductView from "./views/ProductView.vue";
 import ProductWrite from "./views/ProductWrite.vue";
 import Mypage from "./views/Mypage.vue";
 import Chat from "./views/Chat.vue";
+import ChatView from "./views/ChatView.vue";
 import MyWish from "./views/MyWish.vue";
 import MyPost from "./views/MyPost.vue";
 import MyInfo from "./views/MyInfo.vue";
@@ -31,6 +32,11 @@ const routes = [
     path: "/chat",
     component: Chat,
     name: "채팅",
+  },
+  {
+    path: "/chatView",
+    component: ChatView,
+    name: "채팅상세",
   },
   {
     path: "/mywish",
