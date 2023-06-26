@@ -108,6 +108,7 @@ const store = createStore({
 
     /* 상세 - 글 수정페이지로 이동 */
     editPost(state, id) {
+      state.HeaderMenuIsShow = false;
       router.push(`/write/${id}`);
     },
 
