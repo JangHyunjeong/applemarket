@@ -9,10 +9,10 @@
     />
 
     <UserInfo
-      :userImage="`${data.userImage}`"
-      :userId="`${data.userId}`"
-      :userNickName="`${data.userNickName}`"
-      :userLocation="`${data.userLocation}`"
+      :userImage="userInfo.image"
+      :userId="userInfo.id"
+      :userNickName="userInfo.nickName"
+      :userLocation="userInfo.location"
     />
 
     <ProductInfo :data="data" />
@@ -52,7 +52,7 @@ export default {
     ProductImgModal,
   },
   computed: {
-    ...mapState(["productListData"]),
+    ...mapState(["productListData", "userInfo"]),
   },
   methods: {
     openModal() {
