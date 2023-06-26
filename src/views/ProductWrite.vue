@@ -124,7 +124,6 @@ export default {
       // localStorage상에 productListData 유무 체크
       if (oldArr === null) {
         oldArr = [];
-        console.log("oldArr1", oldArr);
       } else {
         dataArr = oldArr;
       }
@@ -161,13 +160,16 @@ export default {
         }
       });
       this.customIdx = customList.indexOf(target);
-      console.log("this.customIdx", this.customIdx);
 
       this.title = customList[this.customIdx].title;
       this.price = customList[this.customIdx].price;
       this.content = customList[this.customIdx].content;
       this.imgUrlArray = customList[this.customIdx].productImages;
-      this.imgUrlArrayLength = customList[this.customIdx].productImages;
+      this.imgUrlArrayLength = customList[this.customIdx].productImages.length;
+
+      if (this.imgUrlArrayLength > 0) {
+        this.isAttached = true;
+      }
     },
 
     // 수정하기
