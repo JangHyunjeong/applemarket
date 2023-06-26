@@ -846,9 +846,9 @@ button.h50 {
         height: 100%;
         object-fit: cover; }
     .chat-message-list .chat-message-item .content {
-      padding: 20px;
+      padding: 8px 10px;
       border: 1px solid #e0e2e7;
-      border-radius: 20px;
+      border-radius: 10px;
       font-size: 16px;
       line-height: 1.4em; }
     .chat-message-list .chat-message-item .time {
