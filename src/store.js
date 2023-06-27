@@ -188,11 +188,22 @@ const store = createStore({
         if (state.recentKeyword == null) {
           state.recentKeyword = [];
         }
-        state.recentKeyword.unshift(value);
-        window.localStorage.setItem(
-          "recentKeyword",
-          JSON.stringify(state.recentKeyword)
-        );
+
+        let overlapFlag = false;
+        state.recentKeyword.forEach(function (item) {
+          if (value == item) {
+            console.log(item);
+            return (overlapFlag = true);
+          }
+        });
+
+        if (overlapFlag === false) {
+          state.recentKeyword.unshift(value);
+          window.localStorage.setItem(
+            "recentKeyword",
+            JSON.stringify(state.recentKeyword)
+          );
+        }
       } else {
         alert("검색어를 입력해주세요.");
       }
