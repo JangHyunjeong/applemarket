@@ -160,6 +160,7 @@ export default {
         }
       });
       this.customIdx = customList.indexOf(target);
+      //console.log("this.customIdx", this.customIdx);
 
       this.title = customList[this.customIdx].title;
       this.price = customList[this.customIdx].price;
