@@ -1,7 +1,7 @@
 ## 프로젝트 소개
 
 - 중고거래 플랫폼 사과마켓
-- vue.js 공부 후, 해당 기술을 적용해보고자 만들었습니다.
+- Vue.js 공부 후, 해당 기술을 적용해보고자 만들었습니다.
   <br>
   <br>
 
@@ -19,9 +19,9 @@
 
 ## 사용 기술
 
-- vue.js
-- scss
-- javacript
+- JavaScript
+- Vue.js
+- SCSS
   <br>
   <br>
 
