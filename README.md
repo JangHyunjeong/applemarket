@@ -38,4 +38,4 @@
 
 ## 구현기 및 회고록
 
-- https://purrfect-spike-ce5.notion.site/7c2ce70a80e2437b84bcadc65d9ae642
+- https://purrfect-spike-ce5.notion.site/37a3f4989cde4c28b66328783c3970d4
