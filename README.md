@@ -38,4 +38,4 @@
 
 ## 구현기 및 회고록
 
-- https://purrfect-spike-ce5.notion.site/37a3f4989cde4c28b66328783c3970d4
+- https://isfpp.tistory.com/161
